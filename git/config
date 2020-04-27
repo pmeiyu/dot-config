@@ -1,0 +1,49 @@
+[user]
+	name = Peng Mei Yu
+	email = pengmyu@gmail.com
+
+[core]
+	autoCRLF = input
+	safeCRLF = warn
+	editor = emacsclient
+
+[commit]
+	gpgSign = false
+
+[push]
+	default = simple
+
+[pull]
+	ff = only
+
+[status]
+	submoduleSummary = true
+
+[color]
+	ui = auto
+
+[alias]
+	a = add
+	b = branch
+	c = commit
+	c-proxy = clone --config "http.proxy=socks5://localhost:1080"
+	c1 = clone --depth 1
+	co = checkout
+	l = log --color --graph
+	p = pull
+	s = status
+	undo = reset --soft HEAD^
+
+[http]
+	# proxy = http://localhost:8080
+	# proxy = socks5://localhost:1080
+
+[sendemail]
+	confirm = auto
+	bcc = pengmyu@gmail.com
+
+	# Send email via local email relay
+	smtpServer = localhost
+
+[gc]
+	auto = 100

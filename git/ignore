@@ -1,0 +1,11 @@
+# Temporary files
+*~
+\#*#
+
+# MacOS
+.DS_Store
+._*
+
+# Python
+*.pyc
+__pycache__/

@@ -1,0 +1,291 @@
+# Title: Sway Window Manager Config
+# Author: Peng Mei Yu
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
+# Variables
+set $terminal termite
+set $launcher rofi -show combi
+
+# Font
+font pango:DejaVu Sans Mono, Monospace 8
+
+# Windows border style
+default_border pixel 2
+
+# Only enable borders if the workspace has more than one visible child and gaps
+# equal to zero.
+smart_borders no_gaps
+
+# The "--i3" option hides the title bar on tabbed and stacked containers that
+# have only one child.
+hide_edge_borders --i3 smart_no_gaps
+
+# Windows gap style
+# Inner gaps
+gaps inner 20
+# Outer gaps
+gaps vertical 10
+gaps horizontal 20
+
+# Only enable gaps if the workspace has more than one child
+smart_gaps on
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start a terminal
+bindsym $mod+Return exec $terminal
+
+# Program launcher
+bindsym $mod+space exec $launcher
+bindsym $mod+x exec $launcher
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+# Exit sway (logs you out of your X session)
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'"
+
+
+## Layout
+
+# Split in horizontal orientation
+bindsym $mod+h split horizontal
+
+# Split in vertical orientation
+bindsym $mod+v split vertical
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+
+## Navigation
+
+# Change focus
+bindsym $mod+i focus up
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# Navigate workspaces next / previous
+bindsym $mod+Tab workspace next
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# Navigate workspaces back and forth
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+u focus parent
+
+# Focus the child container
+bindsym $mod+d focus child
+
+
+## Workspaces
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1: Terminal"
+set $ws2 "2: Emacs"
+set $ws3 "3: Web"
+set $ws4 "4: System"
+set $ws5 "5: File"
+set $ws6 "6: Media"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+## Scratchpad
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.  If
+# there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
+## Resize containers
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+    # Resize window
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # Back to normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+## System controls
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (d) shutdown, (r) reboot
+mode "$mode_system" {
+    bindsym --release l exec --no-startup-id swaylock -c 000000, mode "default"
+    bindsym --release e exit
+    bindsym --release s exec --no-startup-id loginctl suspend, mode "default"
+    bindsym --release h exec --no-startup-id loginctl hibernate, mode "default"
+    bindsym --release d exec --no-startup-id loginctl poweroff, mode "default"
+    bindsym --release r exec --no-startup-id loginctl reboot, mode "default"
+
+    # Back to normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+z mode "$mode_system"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Screenshot
+bindsym Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | wl-copy
+bindsym $mod+Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
+bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
+
+# Laptop lid
+bindswitch --locked lid:off output "*" disable
+bindswitch --locked lid:on  output "*" enable
+
+
+## A special mode for passing through key bindings
+
+mode "passthrough" {
+    bindsym $mod+Escape mode "default"
+}
+bindsym $mod+Escape mode "passthrough"
+
+
+## Bar
+
+bar {
+    position top
+    swaybar_command waybar
+}
+
+
+## Wallpaper
+
+exec_always swaymsg output "*" background "$(find ~/Pictures/Wallpapers -type f | shuf -n 1)" fill
+
+
+## Idle configuration
+
+# Turn off screens after 300 seconds of inactivity, and turn screens back on
+# when resumed.  Then lock screen after another 30 seconds.  It will also lock
+# screen before computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaymsg output "*" dpms off' \
+             resume 'swaymsg output "*" dpms on' \
+         timeout 330 'swaylock -f -c 000000' \
+         before-sleep 'swaylock -f -c 000000'
+
+
+## Transparency
+
+# Default transparency
+for_window [title=".*"] opacity 0.95
+
+# Media viewer
+for_window [app_id="imv"] opacity 1.0
+for_window [app_id="mpv"] opacity 1.0
+for_window [title="[Pp]layer"] opacity 1.0
+for_window [title="[Vv]iewer"] opacity 1.0
+
+# Virtual machine
+for_window [app_id="qemu"] opacity 1.0
+for_window [app_id="virt-manager"] opacity 1.0
+
+
+## Workspaces
+
+# workspace 2: Emacs
+for_window [workspace=$ws2] layout tabbed
+assign [class="Emacs"] $ws2
+
+# workspace 3: Web
+for_window [workspace=$ws3] layout tabbed
+assign [app_id="firefox"] $ws3
+assign [app_id="icecat"] $ws3
+assign [app_id="keepass"] $ws3
+assign [app_id="next-gtk-webkit"] $ws3
+
+# workspace 4: System
+for_window [workspace=$ws4] layout tabbed
+
+# workspace 5: File
+for_window [workspace=$ws5] layout tabbed
+
+# workspace 6: Media
+for_window [workspace=$ws6] layout tabbed
+
+
+## Include extra configurations
+
+include local.$(hostname).conf

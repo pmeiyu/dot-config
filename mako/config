@@ -1,0 +1,65 @@
+#+TITLE: Mako notification daemon config
+
+# Maximum number of visible notifications.  If set to -1, show all.
+max-visible=5
+
+# Sort notifications in ascending(+) or descending(-) order.
+# Options: +/-time, +/-priority
+sort=-time
+
+# Show notifications at the specified layer.  Options: background, bottom, top,
+# and overlay.
+layer=top
+
+# Show notifications at the specified position.  Options: top-right,
+# bottom-right, bottom-center, bottom-left, top-left and top-center.
+anchor=top-right
+
+
+## Style
+
+# Pango format font.
+font=monospace 10
+
+# Size
+width=300
+height=100
+margin=10
+padding=5
+border-size=1
+
+# Color
+background-color=#285577FF
+text-color=#FFFFFFFF
+border-color=#4c7899FF
+
+# Enable Pango markup for the content of notifications.
+markup=1
+format=<b>%s</b>\n%b
+
+
+## Timeout
+
+# Set the default timeout in milliseconds.  Set it to zero to disable timeout.
+default-timeout=10000
+
+# Ignore the timeout sent with notifications and use the one provided by
+# default-timeout instead.
+ignore-timeout=false
+
+
+## Urgency
+
+[urgency=low]
+background-color=#6C757D
+text-color=#F9FAF9
+
+[urgency=normal]
+background-color=#285577FF
+text-color=#F9FAF9
+
+[urgency=high]
+background-color=#DC3545
+text-color=#F9FAF9
+border-color=#ff0000
+default-timeout=0

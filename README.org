@@ -1,0 +1,7 @@
+* Introduction
+  This repository is my =~/.config=.
+
+* License
+  Copyright © 2015-2020 Peng Mei Yu
+
+  This project is licensed under the GNU General Public License Version 3.

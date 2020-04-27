@@ -1,0 +1,36 @@
+#+TITLE: Youtube-dl Configuration
+
+# Download only videos not listed in the archive file.  Record the IDs of all
+# downloaded videos in it.
+--download-archive ~/.local/log/youtube-dl.log
+
+# File name template
+--output "%(uploader)s-%(title)s-%(id)s.%(ext)s"
+
+# User-Agent
+--user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+
+# Codec preference
+--format bestvideo[vcodec^=av01][height<=1080]+bestaudio[acodec=opus]/bestvideo+bestaudio/best
+
+# Prefer free video formats unless a specific one is requested.
+--prefer-free-formats
+
+# If a merge is required (e.g. bestvideo+bestaudio), output to given container
+# format.
+--merge-output-format mkv
+
+# Embed metadata
+--add-metadata
+
+# Embed subtitles
+--embed-subs
+
+# Download all the available subtitles.
+--all-subs
+
+# Languages of the subtitles to download.  Separated by commas.
+# --sub-lang en
+
+# Proxy
+# --proxy socks5://localhost:1080

@@ -1,0 +1,20 @@
+;; -*- mode: scheme -*-
+;;
+;; Mcron Configuration
+;;
+;; (use-modules (mcron job-specifier))
+;;
+;; Available functions:
+;; (job time-proc action #:optional name #:key user)
+;; (current-time)
+;; (range start end #:optional step)
+;; (next-second #:optional second-list)
+;; (next-second-from current-time #:optional second-list)
+;;
+;; Example:
+;; (next-hour (range 0 24 6))  ; On 0, 6, 12 and 18 o'clock
+;;
+
+(job '(next-hour)
+     "change-wallpaper"
+     "change-wallpaper")

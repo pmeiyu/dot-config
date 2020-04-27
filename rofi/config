@@ -1,0 +1,6 @@
+rofi.combi-modi: window,drun,run
+rofi.modi: combi,drun,run
+rofi.display-combi: /
+rofi.display-drun: app
+rofi.display-run: run
+rofi.sidebar-mode: true

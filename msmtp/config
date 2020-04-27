@@ -1,0 +1,18 @@
+# Set default values for all following accounts.
+defaults
+auth            on
+port            465
+tls             on
+tls_starttls    off
+tls_trust_file  /etc/ssl/certs/ca-certificates.crt
+logfile         ~/.local/log/msmtp.log
+
+# local SMTP server
+account         local
+auth            off
+host            localhost
+port            25
+tls             off
+
+# Set a default account.
+account         default : local

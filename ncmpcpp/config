@@ -1,0 +1,51 @@
+## ncmpcpp Configuration
+#
+##### connection settings #####
+#
+#mpd_host = localhost
+#
+#mpd_port = 6600
+#
+##
+## Needed for tag editor and file operations to work.
+##
+mpd_music_dir = ~/Music
+#
+##### music visualizer #####
+##
+## Note: In order to make music visualizer work you'll need to use mpd fifo
+## output, whose format parameter has to be set to 44100:16:1 for mono
+## visualization or 44100:16:2 for stereo visualization. Example configuration
+## (it has to be put into mpd.conf):
+##
+## audio_output {
+##        type            "fifo"
+##        name            "Visualizer Feed"
+##        path            "/tmp/mpd.fifo"
+##        format          "44100:16:2"
+## }
+##
+#
+visualizer_fifo_path = /tmp/mpd.fifo
+#
+##
+## Note: Below parameter is needed for ncmpcpp to determine which output
+## provides data for visualizer and thus allow syncing between visualization and
+## sound as currently there are some problems with it.
+##
+#
+visualizer_output_name = Visualizer Feed
+#
+##
+## If you set format to 44100:16:2, make it 'yes'.
+##
+visualizer_in_stereo = yes
+#
+##
+## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
+## with fftw support.
+##
+#
+## Available values: spectrum, wave, wave_filled, ellipse.
+##
+visualizer_type = spectrum

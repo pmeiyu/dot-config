@@ -1,0 +1,59 @@
+[general]
+pythonfile = ~/.config/offlineimap/config.py
+metadata = ~/Mail/.offlineimap
+accounts = gmail, protonmail
+
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+postsynchook = ~/.config/offlineimap/post-sync.sh
+proxy = SOCKS5:localhost:1080
+
+[Repository gmail-local]
+type = GmailMaildir
+localfolders = ~/Mail/Gmail
+filename_use_mail_timestamp = yes
+
+[Repository gmail-remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = pengmyu@gmail.com
+remotepasseval = emacs_get_secret("imap.gmail.com", "pengmyu@gmail.com")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+folderfilter = lambda foldername: foldername in [
+    "INBOX",
+    "[Gmail]/All Mail",
+    "[Gmail]/Drafts",
+    "[Gmail]/Sent Mail",
+    "[Gmail]/Spam",
+    "[Gmail]/Trash",
+    ]
+
+
+[Account protonmail]
+localrepository = protonmail-local
+remoterepository = protonmail-remote
+postsynchook = ~/.config/offlineimap/post-sync.sh
+
+[Repository protonmail-local]
+type = Maildir
+localfolders = ~/Mail/ProtonMail
+filename_use_mail_timestamp = yes
+utime_from_header = yes
+
+[Repository protonmail-remote]
+type = IMAP
+remotehost = localhost
+remoteport = 1143
+remoteuser = username@protonmail.com
+remotepasseval = emacs_get_secret("localhost", "username@protonmail.com")
+ssl = no
+# One-way sync
+createfolders = false
+sync_deletes = no
+folderfilter = lambda foldername: foldername not in [
+    "All Mail",
+    "Starred",
+    ]
