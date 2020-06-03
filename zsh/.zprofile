@@ -46,7 +46,7 @@ MY_PROFILE=$HOME/.guix-profile
 ROOT_PROFILE="/var/guix/profiles/per-user/root/guix-profile"
 
 # Guix on foreign operating systems.
-if [[ -L $MY_PROFILE && ! -L /run/current-system/profile ]]; then
+if [[ -d /var/guix && ! -L /run/current-system/profile ]]; then
     # Environment
     export GUIX_LOCPATH=$ROOT_PROFILE/lib/locale
 

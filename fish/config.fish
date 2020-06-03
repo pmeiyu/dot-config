@@ -116,7 +116,7 @@ if status is-login
     set ROOT_PROFILE "/var/guix/profiles/per-user/root/guix-profile"
 
     # Guix on foreign operating systems.
-    if test -L $MY_PROFILE && ! test -L /run/current-system/profile
+    if test -d /var/guix && ! test -L /run/current-system/profile
         # Environment
         set -gx GUIX_LOCPATH "$ROOT_PROFILE/lib/locale"
 
