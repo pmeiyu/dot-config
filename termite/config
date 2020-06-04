@@ -1,5 +1,5 @@
 [options]
-font = Monospace 18
+font = Monospace 16
 scrollback_lines = 10000
 
 
