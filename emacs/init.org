@@ -76,7 +76,7 @@
      ;; Keep only one Emacs server instance
      (if (server-running-p)
          (if (daemonp)
-             (error "Another running emacs server detected, abort")
+             (error "Another running Emacs server detected, abort")
            (my-server-shunt))
        (server-start))
    #+end_src
@@ -176,13 +176,13 @@
 *** Font
     #+begin_src emacs-lisp
       (defun my-font-available-p (font)
-        "Detect if a font is available"
+        "Detect if the FONT is available."
         (if (find-font (font-spec :family font))
             t
           nil))
 
       (defun my-set-font (font-list &optional font-size)
-        "Set default font to the first available font in FONT-LIST"
+        "Set default font to the first available font in FONT-LIST."
         (let ((font (cl-find-if #'my-font-available-p font-list)))
 
           (if (null font)
@@ -315,7 +315,7 @@
    Automatically save buffers to file when losing focus
    #+begin_src emacs-lisp
      (defun my-save-buffers ()
-       "Save all file-visiting buffers"
+       "Save all file-visiting buffers."
        (save-some-buffers t nil))
 
      (add-hook 'focus-out-hook 'my-save-buffers)
@@ -991,7 +991,7 @@
        :commands (clang-format-buffer))
 
      (defun clang-format-buffer-smart ()
-       "Reformat buffer if .clang-format exists in the projectile root"
+       "Reformat buffer if .clang-format exists in the projectile root."
        (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
          (clang-format-buffer)))
 
@@ -1609,7 +1609,7 @@
                                        "324" "329" "332" "333" "353" "477"))
 
        (defun my-erc-start-or-switch ()
-         "Connect to ERC, or switch to last active buffer"
+         "Connect to ERC, or switch to last active buffer."
          (interactive)
          (if (get-buffer "irc.freenode.net:6697")
              (erc-track-switch-buffer 1)
@@ -1661,7 +1661,7 @@
                    (buffer-substring-no-properties (region-beginning) (region-end))
                  (current-word)))
          (setq word (replace-regexp-in-string " " "_" word))
-         (browse-url (concat "http://en.wikipedia.org/wiki/" word))))
+         (browse-url (format "https://en.wikipedia.org/wiki/%s" word))))
    #+end_src
 
 ** Lookup Wiktionary
@@ -1669,8 +1669,9 @@
      (autoload 'ispell-get-word "ispell")
 
      (defun my-lookup-wiktionary (word)
+       "Look up the word under cursor in Wiktionary."
        (interactive (list (save-excursion (car (ispell-get-word nil)))))
-       (browse-url (format "http://en.wiktionary.org/wiki/%s" word)))
+       (browse-url (format "https://en.wiktionary.org/wiki/%s" word)))
 
      (global-set-key (kbd "M-#") 'my-lookup-wiktionary)
    #+end_src
