@@ -146,11 +146,13 @@ end
 # ==============================
 
 if status is-login
-    set MY_NIX_PROFILE "$HOME/.nix-profile"
-
     # Nix on foreign operating systems.
-    if functions -q fenv && test -f $MY_NIX_PROFILE/etc/profile.d/nix.sh
-        fenv source $MY_NIX_PROFILE/etc/profile.d/nix.sh
+    set PROFILES /run/current-system/profile $HOME/.nix-profile
+    for i in $PROFILES
+        if functions -q fenv && test -f $i/etc/profile.d/nix.sh
+            fenv source $i/etc/profile.d/nix.sh
+            break
+        end
     end
 end
 
