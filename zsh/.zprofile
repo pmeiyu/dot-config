@@ -69,14 +69,15 @@ fi
 # ==============================
 
 # Nix on foreign operating systems.
-PROFILES="/run/current-system/profile $HOME/.nix-profile"
-for i in $(echo $PROFILES); do
-    if [[ -f "$i/etc/profile.d/nix.sh" ]]; then
-        source "$i/etc/profile.d/nix.sh"
-        break
-    fi
-done
-
+if [[ -d /nix && ! -L /run/current-system/sw ]]; then
+    PROFILES="/run/current-system/profile $HOME/.nix-profile"
+    for i in $(echo $PROFILES); do
+        if [[ -f "$i/etc/profile.d/nix.sh" ]]; then
+            source "$i/etc/profile.d/nix.sh"
+            break
+        fi
+    done
+fi
 
 # ==============================
 # Applications

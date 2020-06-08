@@ -147,11 +147,13 @@ end
 
 if status is-login
     # Nix on foreign operating systems.
-    set PROFILES /run/current-system/profile $HOME/.nix-profile
-    for i in $PROFILES
-        if functions -q fenv && test -f $i/etc/profile.d/nix.sh
-            fenv source $i/etc/profile.d/nix.sh
-            break
+    if test -d /nix && ! test -L /run/current-system/sw
+        set PROFILES /run/current-system/profile $HOME/.nix-profile
+        for i in $PROFILES
+            if functions -q fenv && test -f $i/etc/profile.d/nix.sh
+                fenv source $i/etc/profile.d/nix.sh
+                break
+            end
         end
     end
 end
