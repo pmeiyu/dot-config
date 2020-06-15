@@ -98,6 +98,8 @@ end
 if status is-interactive
     alias df "command df -h"
     alias du "command du -h"
+    alias ffmpeg "command ffmpeg -hide_banner"
+    alias ffprobe "command ffprobe -hide_banner"
     alias py "command ptipython"
     alias rsync 'command rsync -hrtP --filter ". $XDG_CONFIG_HOME/rsync/filter"'
 
