@@ -42,6 +42,8 @@ self: super:
     with python-packages; [
       ipython
       matplotlib
+      numpy
+      pandas
       peewee
       pillow
       pip
@@ -77,5 +79,4 @@ self: super:
       nodePackages.vue-language-server
     ];
   };
-
 }
