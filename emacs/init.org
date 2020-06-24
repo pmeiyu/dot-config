@@ -1,6 +1,6 @@
 #+Title: Emacs Configuration
 #+Author: Peng Mei Yu
-#+Email: pengmyu@gmail.com
+#+Email: i@pengmeiyu.com
 #+Copyright: Copyright 2015-2020 Peng Mei Yu
 #+License: GPLv3
 
@@ -27,7 +27,7 @@
   Name and mail addresses
   #+begin_src emacs-lisp
     (setq user-full-name "Peng Mei Yu"
-          user-mail-address "pengmyu@gmail.com")
+          user-mail-address "i@pengmeiyu.com")
   #+end_src
 
   Identities
