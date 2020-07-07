@@ -1790,6 +1790,29 @@
                      'ox-html-clear-single-linebreak-for-cjk))
    #+end_src
 
+* Devices
+** Office
+   #+begin_src emacs-lisp
+     (when (string-match-p "office" (system-name))
+       (add-to-list 'load-path "~/.guix-profile/share/emacs/site-lisp")
+
+       (with-eval-after-load 'org
+         (setq org-directory "~/Office")
+         (setq org-agenda-files (list org-directory))
+         (setq org-default-notes-file
+               (expand-file-name "Office.org" org-directory))
+         (setq my-org-inbox-file (expand-file-name "Office.org" org-directory)))
+
+       (use-package nyan-mode
+         :ensure t
+         :config
+         (nyan-mode 1))
+
+       (use-package spacemacs-theme
+         :defer t
+         :init (load-theme 'spacemacs-dark t)))
+   #+end_src
+
 * local.init.el
   Load an optional local init file
   #+begin_src emacs-lisp
