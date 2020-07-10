@@ -257,6 +257,11 @@
      (defalias 'yes-or-no-p 'y-or-n-p)
    #+end_src
 
+   Disable dialog boxes.
+   #+begin_src emacs-lisp
+     (setq use-dialog-box nil)
+   #+end_src
+
    Bind ~C-x k~ to ~kill-this-buffer~
    #+begin_src emacs-lisp
      (global-set-key (kbd "C-x k") 'kill-this-buffer)
