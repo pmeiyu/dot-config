@@ -8,6 +8,7 @@
 ;;         (url "https://github.com/pmeiyu/guix-packages.git"))
 ;;        %default-channels)
 
+(use-modules (guix channels))
 
 (define (project-directory project)
   (string-append (or (getenv "HOME")
@@ -16,7 +17,7 @@
                  project))
 
 (list (channel
-       (name 'guix)
+       (inherit (car %default-channels))
        (url (project-directory "guix")))
       (channel
        (name 'my-packages)
