@@ -851,7 +851,6 @@
        (rime-disable-predicates
         '(active-minibuffer-window
           rime-predicate-ace-window-p
-          rime-predicate-after-alphabet-char-p
           rime-predicate-prog-in-code-p)))
    #+end_src
 
