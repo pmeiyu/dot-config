@@ -38,16 +38,23 @@
 * Bootstrap
 ** Startup optimizations
    #+begin_src emacs-lisp
-     ;; Set garbage collection threshold.
+     ;; Set garbage collection threshold to a larger value.
      (setq gc-cons-threshold-original gc-cons-threshold)
      (setq gc-cons-threshold (* 100 gc-cons-threshold-original))
+
+     ;; Disable prompt for vc-follow-symlinks.  When desktop-save-mode restores
+     ;; buffers during startup, the VC prompt is useless and annoying.
+     (setq vc-follow-symlinks nil)
 
      ;; Restore default values after initialization.
      (add-hook 'after-init-hook
                (lambda ()
                  (setq gc-cons-threshold gc-cons-threshold-original)
                  (makunbound 'gc-cons-threshold-original)
-                 (message "Restored gc-cons-threshold")))
+
+                 (setq vc-follow-symlinks 'ask)
+
+                 (message "Init done")))
    #+end_src
 
 ** Enforce minimum Emacs version
