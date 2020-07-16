@@ -844,14 +844,14 @@
    #+begin_src emacs-lisp
      (use-package rime
        :ensure nil
-       :custom
-       (default-input-method "rime")
-       (rime-show-candidate 'posframe)
-       (rime-posframe-style 'vertical)
-       (rime-disable-predicates
-        '(active-minibuffer-window
-          rime-predicate-ace-window-p
-          rime-predicate-prog-in-code-p)))
+       :config
+       (setq default-input-method "rime")
+       (setq rime-show-candidate 'posframe)
+       (setq rime-posframe-style 'vertical)
+       (setq rime-disable-predicates
+             '(active-minibuffer-window
+               rime-predicate-ace-window-p
+               rime-predicate-prog-in-code-p)))
    #+end_src
 
 * Programming
