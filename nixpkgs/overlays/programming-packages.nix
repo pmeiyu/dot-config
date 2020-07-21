@@ -48,7 +48,6 @@ self: super:
       pillow
       pip
       ptpython
-      pymysql
       python-language-server
       pytz
       requests
