@@ -1645,6 +1645,13 @@
                       :nick my-irc-nick)))))
    #+end_src
 
+** Telegram
+   #+begin_src emacs-lisp
+     (use-package telega
+       :ensure nil
+       :commands (telega))
+   #+end_src
+
 ** RSS feed
    elfeed
    #+begin_src emacs-lisp
