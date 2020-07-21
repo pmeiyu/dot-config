@@ -7,10 +7,12 @@ self: super:
       version = "0.0.0";
       versionModifier = "-git";
 
-      doCheck = false;
-
       src = ~/Projects/emacs;
 
       patches = [ ];
+
+      buildInputs = attrs.buildInputs ++ [ super.jansson super.harfbuzz.dev ];
+
+      doCheck = false;
     });
 }
