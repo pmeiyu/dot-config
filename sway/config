@@ -277,7 +277,7 @@ for_window [workspace=$ws3] layout tabbed
 assign [app_id="firefox"] $ws3
 assign [app_id="icecat"] $ws3
 assign [app_id="keepass"] $ws3
-assign [app_id="next-gtk-webkit"] $ws3
+assign [class="Firefox"] $ws3
 
 # workspace 4: System
 for_window [workspace=$ws4] layout tabbed
