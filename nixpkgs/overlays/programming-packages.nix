@@ -1,35 +1,47 @@
 self: super:
 
 {
-  programming-packages = super.pkgs.buildEnv {
-    name = "programming-packages";
+  programming-packages-all = super.pkgs.buildEnv {
+    name = "programming-packages-all";
     paths = with super.pkgs; [
-      # Language servers
-      nodePackages.bash-language-server
-
-      # Tools
-      gettext
-      gnumake
+      programming-packages-tools
+      programming-packages-c
+      programming-packages-go
+      programming-packages-java
+      programming-packages-nodejs
+      programming-packages-python
+      programming-packages-rust
+      programming-packages-web
     ];
   };
 
-  c-programming-packages = super.pkgs.buildEnv {
-    name = "c-programming-packages";
+  programming-packages-tools = super.pkgs.buildEnv {
+    name = "programming-packages-tools";
+    paths = with super.pkgs; [
+      gettext
+      gitFull
+      gnumake
+      nodePackages.bash-language-server
+    ];
+  };
+
+  programming-packages-c = super.pkgs.buildEnv {
+    name = "programming-packages-c";
     paths = with super.pkgs; [ clang-tools gcc ];
   };
 
-  go-programming-packages = super.pkgs.buildEnv {
-    name = "go-programming-packages";
+  programming-packages-go = super.pkgs.buildEnv {
+    name = "programming-packages-go";
     paths = with super.pkgs; [ go go-langserver ];
   };
 
-  java-programming-packages = super.pkgs.buildEnv {
-    name = "java-programming-packages";
+  programming-packages-java = super.pkgs.buildEnv {
+    name = "programming-packages-java";
     paths = with super.pkgs; [ gradle maven ];
   };
 
-  nodejs-programming-packages = super.pkgs.buildEnv {
-    name = "nodejs-programming-packages";
+  programming-packages-nodejs = super.pkgs.buildEnv {
+    name = "programming-packages-nodejs";
     paths = with super.pkgs; [
       nodePackages.typescript
       nodePackages.typescript-language-server
@@ -51,16 +63,16 @@ self: super:
       python-language-server
       pytz
       requests
-      virtualenvwrapper
+      sqlalchemy
     ]);
 
-  python-programming-packages = super.pkgs.buildEnv {
-    name = "python-programming-packages";
+  programming-packages-python = super.pkgs.buildEnv {
+    name = "programming-packages-python";
     paths = with super.pkgs; [ my-python ];
   };
 
-  rust-programming-packages = super.pkgs.buildEnv {
-    name = "rust-programming-packages";
+  programming-packages-rust = super.pkgs.buildEnv {
+    name = "programming-packages-rust";
     paths = with super.pkgs; [
       cargo
       rls
@@ -70,8 +82,8 @@ self: super:
     ];
   };
 
-  web-programming-packages = super.pkgs.buildEnv {
-    name = "web-programming-packages";
+  programming-packages-web = super.pkgs.buildEnv {
+    name = "programming-packages-web";
     paths = with super.pkgs; [
       nodePackages.vscode-css-languageserver-bin
       nodePackages.vscode-html-languageserver-bin
