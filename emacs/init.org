@@ -858,7 +858,8 @@
        (setq rime-disable-predicates
              '(active-minibuffer-window
                rime-predicate-ace-window-p
-               rime-predicate-prog-in-code-p)))
+               rime-predicate-prog-in-code-p))
+       (add-to-list 'rime-translate-keybindings "C-`"))
    #+end_src
 
 * Programming
