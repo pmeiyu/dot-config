@@ -1765,25 +1765,24 @@
              (user-error "No font is available in FONT-LIST"))
 
          (message "Set Chinese font to %s" chinese-font)
-         (dolist (charset '(han cjk-misc))
-           (set-fontset-font t charset
+         (dolist (script '(han cjk-misc))
+           (set-fontset-font t script
                              (font-spec :family chinese-font :size font-size)))
 
          ;; Rescale Chinese fonts
          (let ((rescale-factor 1.25))
            (setq face-font-rescale-alist
                  `((".* CJK .*" . ,rescale-factor)
-                   (".* Han .*" . ,rescale-factor)
-                   (".*[黑宋体體].*" . ,rescale-factor))))))
+                   (".*Source Han.*" . ,rescale-factor)
+                   (".*WenQuanYi.*" . ,rescale-factor))))))
    #+end_src
 
    My preferred fonts
    #+begin_src emacs-lisp
      (when (display-graphic-p)
-       (my-set-chinese-font
-        '("WenQuanYi Micro Hei"
-          "Source Han Sans"
-          "Noto Sans CJK SC")))
+       (my-set-chinese-font '("WenQuanYi Micro Hei"
+                              "Source Han Sans"
+                              "Noto Sans CJK SC")))
    #+end_src
 
 ** Fix org-export
