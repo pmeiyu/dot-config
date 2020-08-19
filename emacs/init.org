@@ -59,7 +59,7 @@
 
 ** Enforce minimum Emacs version
    #+begin_src emacs-lisp
-     (let ((min-version "26.0"))
+     (let ((min-version "27.1"))
        (when (version< emacs-version min-version)
          (error "Gnu Emacs %s or newer is required" min-version)))
    #+end_src
