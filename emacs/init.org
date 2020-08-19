@@ -42,18 +42,11 @@
      (setq gc-cons-threshold-original gc-cons-threshold)
      (setq gc-cons-threshold (* 100 gc-cons-threshold-original))
 
-     ;; Disable prompt for vc-follow-symlinks.  When desktop-save-mode restores
-     ;; buffers during startup, the VC prompt is useless and annoying.
-     (setq vc-follow-symlinks nil)
-
      ;; Restore default values after initialization.
      (add-hook 'after-init-hook
                (lambda ()
                  (setq gc-cons-threshold gc-cons-threshold-original)
                  (makunbound 'gc-cons-threshold-original)
-
-                 (setq vc-follow-symlinks 'ask)
-
                  (message "Init done")))
    #+end_src
 
@@ -510,6 +503,19 @@
 
 ** Session
 *** Desktop
+
+    Disable prompt for vc-follow-symlinks during initialization.
+    #+begin_src emacs-lisp
+      ;; When desktop-save-mode restores buffers, the VC prompt is useless and
+      ;; annoying.
+      (setq vc-follow-symlinks nil)
+
+      ;; Restore default values after initialization.
+      (add-hook 'after-init-hook
+                (lambda ()
+                  (setq vc-follow-symlinks 'ask)))
+    #+end_src
+
     #+begin_src emacs-lisp
       (setq desktop-auto-save-timeout 600)
       (desktop-save-mode t)
