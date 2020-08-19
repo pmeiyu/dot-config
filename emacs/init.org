@@ -474,9 +474,10 @@
 
 ** Security
 *** GPG
-    Query passphrase through the minibuffer, instead of the pinentry program
-    #+begin_src emacs-lisp :tangle no
-      (setq epg-pinentry-mode 'loopback)
+    Query passphrase through the minibuffer, instead of the pinentry program.
+    #+begin_src emacs-lisp
+      (unless (display-graphic-p)
+        (setq epg-pinentry-mode 'loopback))
     #+end_src
 
 *** auth-source
