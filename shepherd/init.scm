@@ -1,47 +1,62 @@
 ;; Shepherd Configuration
 
-;; (use-modules (shepherd service) (oop goops))
+(use-modules (shepherd service)
+             (oop goops)
+             ((ice-9 ftw) #:select (scandir)))
 
+(define %xdg-config-home
+  (or (getenv "XDG_CONFIG_HOME")
+      (string-append (or (getenv "HOME")
+                         (passwd:dir (getpwuid (getuid))))
+                     "/.config")))
 
-(define emacs-daemon
+(define %log-directory
+  (string-append (or (getenv "HOME")
+                     (passwd:dir (getpwuid (getuid))))
+                 "/.local/log"))
+
+(unless (file-exists? %log-directory)
+  (mkdir %log-directory))
+
+;; Emacs
+(define emacs
   (make <service>
     #:docstring "Emacs daemon"
-    #:provides '(emacs-daemon)
+    #:provides '(emacs emacs-daemon)
     #:start (make-forkexec-constructor
-             '("emacs" "--fg-daemon"))
-    #:stop (make-system-destructor
-            "emacsclient" " --eval" " (kill-emacs)")))
+             '("emacs" "--fg-daemon")
+             #:log-file (string-append %log-directory "/emacs.log"))
+    #:stop (make-kill-destructor)))
 
+(register-services emacs)
+
+;; Mcron
 (define mcron
   (make <service>
     #:docstring "mcron"
     #:provides '(mcron cron)
     #:start (make-forkexec-constructor
-             '("mcron"))
+             '("mcron")
+             #:log-file (string-append %log-directory "/mcron.log"))
     #:stop (make-kill-destructor)))
 
-(define syncthing
-  (make <service>
-    #:docstring "syncthing"
-    #:provides '(syncthing)
-    #:start (make-forkexec-constructor
-             '("syncthing" "-no-browser"))
-    #:stop (make-kill-destructor)))
+(register-services mcron)
 
-
+;; Services to start when shepherd starts.
 (define daemons
-  (list mcron syncthing))
+  (list emacs mcron))
 
+;; Load all the files in the directory 'init.d' with a suffix '.scm'.
+(let ((init-dir (string-append %xdg-config-home "/shepherd/init.d")))
+  (for-each (lambda (file)
+              (load (string-append init-dir "/" file)))
+            (or (scandir init-dir
+                         (lambda (file)
+                           (string-suffix? ".scm" file)))
+                '())))
 
-;; Services known to shepherd:
-;; Add new services (defined using 'make <service>') to shepherd here by
-;; providing them as arguments to 'register-services'.
-(apply register-services daemons)
-
-;; Send shepherd into the background
-(action 'shepherd 'daemonize)
-
-;; Services to start when shepherd starts:
-;; Add the name of each service that should be started to the list
-;; below passed to 'for-each'.
+;; Start services.
 (for-each start daemons)
+
+;; Send shepherd into the background.
+(action 'shepherd 'daemonize)
