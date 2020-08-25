@@ -174,13 +174,13 @@
 
 *** Font
     #+begin_src emacs-lisp
-      (defun my-font-available-p (font)
+      (defun my-font-available-p (font &optional frame)
         "Detect if the FONT is available."
-        (if (find-font (font-spec :family font))
+        (if (find-font (font-spec :family font) frame)
             t
           nil))
 
-      (defun my-set-font (font-list &optional font-size)
+      (defun my-set-font (font-list &optional font-size frame)
         "Set default font to the first available font in FONT-LIST."
         (let ((font (cl-find-if #'my-font-available-p font-list)))
 
@@ -189,13 +189,17 @@
 
           (message "Set default font to %s" font)
           (set-face-font 'default
-                         (font-spec :family font :size font-size))))
+                         (font-spec :family font :size font-size)
+                         frame)))
     #+end_src
 
     My preferred fonts
     #+begin_src emacs-lisp
-      (when (display-graphic-p)
-        (my-set-font '("DejaVu Sans Mono" "Monospace")))
+      (defun my-set-font-for-frame (frame)
+        (when (display-graphic-p)
+          (my-set-font '("DejaVu Sans Mono" "Monospace") nil frame)))
+
+      (add-hook 'after-make-frame-functions 'my-set-font-for-frame)
     #+end_src
 
 ** Basic interface
@@ -1770,7 +1774,7 @@
    #+end_example
 
    #+begin_src emacs-lisp
-     (defun my-set-chinese-font (font-list &optional font-size)
+     (defun my-set-chinese-font (font-list &optional font-size frame)
        "Set Chinese font to the first available font in FONT-LIST."
        (let ((chinese-font (cl-find-if #'my-font-available-p font-list)))
 
@@ -1779,8 +1783,10 @@
 
          (message "Set Chinese font to %s" chinese-font)
          (dolist (script '(han cjk-misc))
-           (set-fontset-font t script
-                             (font-spec :family chinese-font :size font-size)))
+           (set-fontset-font t
+                             script
+                             (font-spec :family chinese-font :size font-size)
+                             frame))
 
          ;; Rescale Chinese fonts
          (let ((rescale-factor 1.25))
@@ -1792,10 +1798,15 @@
 
    My preferred fonts
    #+begin_src emacs-lisp
-     (when (display-graphic-p)
-       (my-set-chinese-font '("WenQuanYi Micro Hei"
-                              "Source Han Sans"
-                              "Noto Sans CJK SC")))
+     (defun my-set-chinese-font-for-frame (frame)
+       (when (display-graphic-p)
+         (my-set-chinese-font '("WenQuanYi Micro Hei"
+                                "Source Han Sans"
+                                "Noto Sans CJK SC")
+                              nil
+                              frame)))
+
+     (add-hook 'after-make-frame-functions 'my-set-chinese-font-for-frame)
    #+end_src
 
 ** Fix org-export
