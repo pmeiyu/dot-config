@@ -519,6 +519,7 @@
 
     #+begin_src emacs-lisp
       (setq desktop-auto-save-timeout 600)
+      (setq desktop-save t)
       (desktop-save-mode t)
     #+end_src
 
