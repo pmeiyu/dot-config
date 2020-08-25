@@ -68,7 +68,7 @@
 
      (defun my-server-shunt ()
        "Shunts to emacsclient"
-       (let ((args (append '("emacsclient" "-a" "\"\"" "-n")
+       (let ((args (append '("emacsclient" "-c" "-n")
                            (cdr command-line-args))))
          (shell-command (substring (format "%S" args) 1 -1))
          (kill-emacs)))
