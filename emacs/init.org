@@ -282,6 +282,11 @@
      (global-set-key (kbd "C-c s") 'eshell)
    #+end_src
 
+** Completion
+   #+begin_src emacs-lisp
+     (add-to-list 'completion-styles 'flex 'append)
+   #+end_src
+
 ** Editing
    Fill column
    #+begin_src emacs-lisp
