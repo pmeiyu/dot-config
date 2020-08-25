@@ -383,6 +383,27 @@
      (setq bookmark-save-flag 1)
    #+end_src
 
+** Calendar
+   #+begin_src emacs-lisp
+     (require 'calendar)
+     (require 'holidays)
+     (require 'cal-china)
+
+     (calendar-set-date-style 'iso)
+     (setq calendar-mark-holidays-flag t)
+     (setq calendar-chinese-all-holidays-flag t)
+     (setq calendar-holidays
+           (append holiday-general-holidays
+                   holiday-local-holidays
+                   holiday-other-holidays
+                   holiday-oriental-holidays))
+
+     (setq calendar-chinese-celestial-stem
+           ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
+     (setq calendar-chinese-terrestrial-branch
+           ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
+   #+end_src
+
 ** Internet
    Don’t send anything in HTTP header field
    #+begin_src emacs-lisp
