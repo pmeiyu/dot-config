@@ -18,6 +18,10 @@
 (unless (file-exists? %log-directory)
   (mkdir %log-directory))
 
+;; Send shepherd into background.  This should be done before respawnable
+;; services are started in order to catch the SIGCHLD signal.
+(action 'shepherd 'daemonize)
+
 ;; Emacs
 (define emacs
   (make <service>
@@ -26,7 +30,8 @@
     #:start (make-forkexec-constructor
              '("emacs" "--fg-daemon")
              #:log-file (string-append %log-directory "/emacs.log"))
-    #:stop (make-kill-destructor)))
+    #:stop (make-kill-destructor)
+    #:respawn? #t))
 
 (register-services emacs)
 
@@ -38,7 +43,8 @@
     #:start (make-forkexec-constructor
              '("mcron")
              #:log-file (string-append %log-directory "/mcron.log"))
-    #:stop (make-kill-destructor)))
+    #:stop (make-kill-destructor)
+    #:respawn? #t))
 
 (register-services mcron)
 
@@ -57,6 +63,3 @@
 
 ;; Start services.
 (for-each start daemons)
-
-;; Send shepherd into the background.
-(action 'shepherd 'daemonize)
