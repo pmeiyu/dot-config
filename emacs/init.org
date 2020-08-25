@@ -1184,6 +1184,15 @@
      rustup component add rls rust-analysis rust-src rustfmt
    #+end_src
 
+** SQL
+
+   Syntax-based indentation for sql-mode.
+   #+begin_src emacs-lisp
+     (use-package sql-indent
+       :ensure t
+       :hook (sql-mode . sqlind-minor-mode))
+   #+end_src
+
 ** Web
 *** CSS
     Language server
