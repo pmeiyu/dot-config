@@ -523,7 +523,7 @@
       (desktop-save-mode t)
     #+end_src
 
-*** Recent files
+*** Recent Files
     #+begin_src emacs-lisp
       (require 'recentf)
       (setq recentf-auto-cleanup 'never)
@@ -534,12 +534,12 @@
       (recentf-mode 1)
     #+end_src
 
-*** minibuffer history
+*** Minibuffer History
     #+begin_src emacs-lisp
       (savehist-mode 1)
     #+end_src
 
-*** Auto-save
+*** Auto Save
     #+begin_src emacs-lisp
       (setq auto-save-list-file-prefix
             (expand-file-name "auto-save-list/" user-emacs-cache-dir))
@@ -1755,7 +1755,7 @@
    To align Chinese characters with English characters vertically, the Chinese
    font should be rescaled.
    #+begin_example
-     chinese_character_width = 2 * english_character_width
+     chinese_character_width == 2 * english_character_width
 
      if english_font_size is in [12 14 17 19 20 22]:
          chinese_font_size = english_font_zise * 1.2
