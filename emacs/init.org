@@ -352,7 +352,8 @@
    whitespace-mode
    #+begin_src emacs-lisp
      (require 'whitespace)
-     (setq whitespace-style '(face empty trailing lines-tail indentation))
+     (setq whitespace-style '(face empty trailing lines-tail indentation
+                                   missing-newline-at-eof))
      (setq whitespace-line-column 80)
 
      (defun my-whitespace-mode-setup ()
