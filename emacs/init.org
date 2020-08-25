@@ -172,36 +172,6 @@
       (setq read-quoted-char-radix 16)
     #+end_src
 
-*** Font
-    #+begin_src emacs-lisp
-      (defun my-font-available-p (font &optional frame)
-        "Detect if the FONT is available."
-        (if (find-font (font-spec :family font) frame)
-            t
-          nil))
-
-      (defun my-set-font (font-list &optional font-size frame)
-        "Set default font to the first available font in FONT-LIST."
-        (let ((font (cl-find-if #'my-font-available-p font-list)))
-
-          (if (null font)
-              (user-error "No font is available in FONT-LIST"))
-
-          (message "Set default font to %s" font)
-          (set-face-font 'default
-                         (font-spec :family font :size font-size)
-                         frame)))
-    #+end_src
-
-    My preferred fonts
-    #+begin_src emacs-lisp
-      (defun my-set-font-for-frame (frame)
-        (when (display-graphic-p)
-          (my-set-font '("DejaVu Sans Mono" "Monospace") nil frame)))
-
-      (add-hook 'after-make-frame-functions 'my-set-font-for-frame)
-    #+end_src
-
 ** Basic interface
    Inhibits the startup screen
    #+begin_src emacs-lisp
@@ -562,6 +532,14 @@
     #+end_src
 
 * Theme
+** Fonts
+   #+begin_src emacs-lisp
+     (use-package cnfonts
+       :ensure t
+       :config
+       (cnfonts-enable))
+   #+end_src
+
 ** Theme
    #+begin_src emacs-lisp
      (use-package zenburn-theme
@@ -1761,54 +1739,6 @@
    #+end_src
 
 * Chinese compatibility hack
-** Chinese Font
-   To align Chinese characters with English characters vertically, the Chinese
-   font should be rescaled.
-   #+begin_example
-     chinese_character_width == 2 * english_character_width
-
-     if english_font_size is in [12 14 17 19 20 22]:
-         chinese_font_size = english_font_zise * 1.2
-     if english_font_size is in [13 15 16 18 21 23]:
-         chinese_font_size = english_font_zise * 1.25
-   #+end_example
-
-   #+begin_src emacs-lisp
-     (defun my-set-chinese-font (font-list &optional font-size frame)
-       "Set Chinese font to the first available font in FONT-LIST."
-       (let ((chinese-font (cl-find-if #'my-font-available-p font-list)))
-
-         (if (null chinese-font)
-             (user-error "No font is available in FONT-LIST"))
-
-         (message "Set Chinese font to %s" chinese-font)
-         (dolist (script '(han cjk-misc))
-           (set-fontset-font t
-                             script
-                             (font-spec :family chinese-font :size font-size)
-                             frame))
-
-         ;; Rescale Chinese fonts
-         (let ((rescale-factor 1.25))
-           (setq face-font-rescale-alist
-                 `((".* CJK .*" . ,rescale-factor)
-                   (".*Source Han.*" . ,rescale-factor)
-                   (".*WenQuanYi.*" . ,rescale-factor))))))
-   #+end_src
-
-   My preferred fonts
-   #+begin_src emacs-lisp
-     (defun my-set-chinese-font-for-frame (frame)
-       (when (display-graphic-p)
-         (my-set-chinese-font '("WenQuanYi Micro Hei"
-                                "Source Han Sans"
-                                "Noto Sans CJK SC")
-                              nil
-                              frame)))
-
-     (add-hook 'after-make-frame-functions 'my-set-chinese-font-for-frame)
-   #+end_src
-
 ** Fix org-export
    by zwz.github.io
    #+begin_src emacs-lisp
