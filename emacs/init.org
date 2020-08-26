@@ -896,7 +896,7 @@
    #+begin_src emacs-lisp
      (use-package lsp-mode
        :ensure t
-       :commands (lsp lsp-mode))
+       :commands (lsp lsp-deferred lsp-mode))
    #+end_src
 
    lsp-ui
@@ -996,7 +996,7 @@
 ** Bash
    Language server
    #+begin_src emacs-lisp :tangle no
-     (add-hook 'sh-mode-hook 'lsp)
+     (add-hook 'sh-mode-hook 'lsp-deferred)
    #+end_src
 
    Install bash language server
@@ -1012,8 +1012,8 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'c-mode-hook 'lsp)
-     (add-hook 'c++-mode-hook 'lsp)
+     (add-hook 'c-mode-hook 'lsp-deferred)
+     (add-hook 'c++-mode-hook 'lsp-deferred)
    #+end_src
 
    Install C language server
@@ -1054,7 +1054,7 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'csharp-mode-hook 'lsp)
+     (add-hook 'csharp-mode-hook 'lsp-deferred)
    #+end_src
 
 ** fish shell
@@ -1086,7 +1086,7 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'go-mode-hook 'lsp)
+     (add-hook 'go-mode-hook 'lsp-deferred)
    #+end_src
 
    Install go language server
@@ -1108,13 +1108,13 @@
    #+begin_src emacs-lisp
      (use-package lsp-java
        :ensure nil
-       :hook (java-mode . lsp))
+       :hook (java-mode . lsp-deferred))
    #+end_src
 
 ** JavaScript
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'js-mode-hook 'lsp)
+     (add-hook 'js-mode-hook 'lsp-deferred)
    #+end_src
 
    Install JavaScript language server
@@ -1149,7 +1149,7 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'powershell-mode-hook 'lsp)
+     (add-hook 'powershell-mode-hook 'lsp-deferred)
    #+end_src
 
 ** Python
@@ -1170,7 +1170,7 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'python-mode-hook 'lsp)
+     (add-hook 'python-mode-hook 'lsp-deferred)
    #+end_src
 
    Install python language server
@@ -1190,7 +1190,7 @@
 
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'rust-mode-hook 'lsp)
+     (add-hook 'rust-mode-hook 'lsp-deferred)
    #+end_src
 
    Install Rust language server
@@ -1211,7 +1211,7 @@
 *** CSS
     Language server
     #+begin_src emacs-lisp
-      (add-hook 'css-mode-hook 'lsp)
+      (add-hook 'css-mode-hook 'lsp-deferred)
     #+end_src
 
     Install CSS language server
@@ -1236,7 +1236,7 @@
 
     Language server
     #+begin_src emacs-lisp
-      (add-hook 'html-mode-hook 'lsp)
+      (add-hook 'html-mode-hook 'lsp-deferred)
     #+end_src
 
     Install HTML language server
@@ -1254,7 +1254,7 @@
 
     Language server
     #+begin_src emacs-lisp
-      (add-hook 'vue-mode-hook 'lsp)
+      (add-hook 'vue-mode-hook 'lsp-deferred)
     #+end_src
 
     Install Vue language server
@@ -1512,7 +1512,7 @@
 
    Language server
    #+begin_src emacs-lisp :tangle no
-     (add-hook 'LaTeX-mode-hook 'lsp)
+     (add-hook 'LaTeX-mode-hook 'lsp-deferred)
    #+end_src
 
    Install TeX language server
@@ -1530,7 +1530,7 @@
 ** XML
    Language server
    #+begin_src emacs-lisp
-     (add-hook 'nxml-mode-hook 'lsp)
+     (add-hook 'nxml-mode-hook 'lsp-deferred)
 
      (setq lsp-xml-jar-file
            (expand-file-name "org.eclipse.lsp4xml.jar" user-emacs-directory))
