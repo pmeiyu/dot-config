@@ -38,14 +38,14 @@
 * Bootstrap
 ** Startup optimizations
    #+begin_src emacs-lisp
-     ;; Set garbage collection threshold to a larger value.
+     ;; Set garbage collection threshold to a big value.
      (setq gc-cons-threshold-original gc-cons-threshold)
      (setq gc-cons-threshold (* 100 gc-cons-threshold-original))
 
-     ;; Restore default values after initialization.
+     ;; Set garbage collection threshold to a smaller value after initialization.
      (add-hook 'after-init-hook
                (lambda ()
-                 (setq gc-cons-threshold gc-cons-threshold-original)
+                 (setq gc-cons-threshold (* 10 gc-cons-threshold-original))
                  (makunbound 'gc-cons-threshold-original)
                  (message "Init done")))
    #+end_src
