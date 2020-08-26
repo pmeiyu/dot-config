@@ -896,7 +896,9 @@
    #+begin_src emacs-lisp
      (use-package lsp-mode
        :ensure t
-       :commands (lsp lsp-deferred lsp-mode))
+       :commands (lsp lsp-deferred lsp-mode)
+       :config
+       (setq lsp-auto-guess-root t))
    #+end_src
 
    lsp-ui
