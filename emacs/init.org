@@ -910,14 +910,6 @@
                    ("C-M-." . lsp-ui-peek-find-implementation)))
    #+end_src
 
-   company-lsp
-   #+begin_src emacs-lisp
-     (use-package company-lsp
-       :ensure t
-       :after (company lsp-mode)
-       :commands (company-lsp))
-   #+end_src
-
    debug
    #+begin_src emacs-lisp
      (use-package dap-mode
