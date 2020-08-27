@@ -57,7 +57,9 @@ if [[ -d /gnu && ! -L /run/current-system/profile ]]; then
     export XDG_DATA_DIRS=$MY_PROFILE/share:$XDG_DATA_DIRS
 
     # Load $MY_PROFILE/etc/profile
-    GUIX_PROFILE=$MY_PROFILE; source $GUIX_PROFILE/etc/profile
+    if [[ -e $MY_PROFILE/etc/profile ]]; then
+        GUIX_PROFILE=$MY_PROFILE; source $GUIX_PROFILE/etc/profile
+    fi
 
     # PATH
     export PATH=$XDG_CONFIG_HOME/guix/current/bin:$PATH
