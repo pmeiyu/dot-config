@@ -1762,7 +1762,8 @@
        :ensure nil
        :mode ("\\.pdf\\'" . pdf-view-mode)
        :config
-       (pdf-loader-install))
+       (require 'pdf-occur)
+       (pdf-tools-install))
    #+end_src
 
 * Developer Tools
