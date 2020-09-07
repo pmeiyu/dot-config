@@ -755,6 +755,20 @@
         :bind ("C-h m" . discover-my-major))
     #+end_src
 
+** Key Statistics
+
+   keyfreq
+   #+begin_src emacs-lisp
+     (use-package keyfreq
+       :ensure t
+       :defer 10
+       :config
+       (setq keyfreq-file (locate-user-emacs-file "keyfreq"))
+       (setq keyfreq-file.lock (concat keyfreq-file ".lock"))
+       (keyfreq-mode 1)
+       (keyfreq-autosave-mode 1))
+   #+end_src
+
 ** undo-tree
    #+begin_src emacs-lisp
      (use-package undo-tree
