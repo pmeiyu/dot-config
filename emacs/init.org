@@ -368,6 +368,27 @@
       (add-hook 'prog-mode-hook 'my-prog-mode-setup)
     #+end_src
 
+** Spell Checking
+   flyspell
+   #+begin_src emacs-lisp
+     (let ((enable-flyspell nil))
+       (cond
+        ((executable-find "aspell")
+         (setq ispell-program-name "aspell")
+         (setq enable-flyspell t))
+        ((executable-find "hunspell")
+         (setq ispell-program-name "hunspell")
+         (setq ispell-dictionary "en_US")
+         (setq enable-flyspell t))
+        (t
+         (message "Neither aspell nor hunspell found")))
+
+       (when enable-flyspell
+         (require 'flyspell)
+         (add-hook 'text-mode-hook 'flyspell-mode)
+         (add-hook 'prog-mode-hook 'flyspell-prog-mode)))
+   #+end_src
+
 ** Tramp
    #+begin_src emacs-lisp
      (require 'tramp)
@@ -843,30 +864,6 @@
        :config
        (setq company-minimum-prefix-length 2)
        (global-company-mode 1))
-   #+end_src
-
-** Spell checking
-   flyspell
-   #+begin_src emacs-lisp
-     (use-package flyspell
-       :ensure t
-       :defer 10
-       :diminish flyspell-mode
-       :preface
-       (defvar my-enable-flyspell nil)
-       (cond
-        ((executable-find "aspell")
-         (setq ispell-program-name "aspell")
-         (setq my-enable-flyspell t))
-        ((executable-find "hunspell")
-         (setq ispell-program-name "hunspell")
-         (setq ispell-dictionary "en_US")
-         (setq my-enable-flyspell t))
-        (t
-         (message "Neither aspell nor hunspell found")))
-       :if my-enable-flyspell
-       :hook ((text-mode . flyspell-mode)
-              (prog-mode . flyspell-prog-mode)))
    #+end_src
 
 ** Input Method
