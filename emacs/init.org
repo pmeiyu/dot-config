@@ -81,26 +81,6 @@
        (server-start))
    #+end_src
 
-** Require common lisp
-   #+begin_src emacs-lisp
-     (require 'cl-lib)
-   #+end_src
-
-** XDG specification
-   Define XDG directories
-   #+begin_src emacs-lisp
-     (require 'xdg)
-
-     (defvar user-emacs-config-dir
-       (expand-file-name "emacs" (xdg-config-home)))
-
-     (defvar user-emacs-data-dir
-       (expand-file-name "emacs" (xdg-data-home)))
-
-     (defvar user-emacs-cache-dir
-       (expand-file-name "emacs" (xdg-cache-home)))
-   #+end_src
-
 ** Package manager
    #+begin_src emacs-lisp
      (require 'package)
@@ -143,7 +123,27 @@
 * Core
   Emacs built-in features
 
-** environment
+** Require common lisp
+   #+begin_src emacs-lisp
+     (require 'cl-lib)
+   #+end_src
+
+** XDG specification
+   Define XDG directories
+   #+begin_src emacs-lisp
+     (require 'xdg)
+
+     (defvar user-emacs-config-dir
+       (expand-file-name "emacs" (xdg-config-home)))
+
+     (defvar user-emacs-data-dir
+       (expand-file-name "emacs" (xdg-data-home)))
+
+     (defvar user-emacs-cache-dir
+       (expand-file-name "emacs" (xdg-cache-home)))
+   #+end_src
+
+** Environment
 *** Determine operating system type
     #+begin_src emacs-lisp
       (defconst *os-is-gnu* (eq system-type 'gnu/linux))
