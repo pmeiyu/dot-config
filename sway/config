@@ -233,6 +233,15 @@ bar {
 }
 
 
+## Input Devices
+
+input "*" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+}
+
+
 ## Wallpaper
 
 exec_always swaymsg output "*" background "$(find ~/Pictures/Wallpapers -type f | shuf -n 1)" fill
