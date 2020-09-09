@@ -277,6 +277,9 @@ for_window [app_id="virt-manager"] opacity 1.0
 
 ## Workspaces
 
+# workspace 1: Terminal
+for_window [workspace=$ws1] layout tabbed
+
 # workspace 2: Emacs
 for_window [workspace=$ws2] layout tabbed
 assign [class="Emacs"] $ws2
@@ -296,6 +299,18 @@ for_window [workspace=$ws5] layout tabbed
 
 # workspace 6: Media
 for_window [workspace=$ws6] layout tabbed
+
+# workspace 7
+for_window [workspace=$ws7] layout tabbed
+
+# workspace 8
+for_window [workspace=$ws8] layout tabbed
+
+# workspace 9
+for_window [workspace=$ws9] layout tabbed
+
+# workspace 10
+for_window [workspace=$ws10] layout tabbed
 
 
 ## Include extra configurations
