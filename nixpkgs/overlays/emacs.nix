@@ -6,13 +6,8 @@ self: super:
       name = "emacs-${version}${versionModifier}";
       version = "0.0.0";
       versionModifier = "-git";
-
       src = ~/Projects/emacs;
-
       patches = [ ];
-
-      buildInputs = attrs.buildInputs ++ [ super.jansson super.harfbuzz.dev ];
-
       doCheck = false;
     });
 }
