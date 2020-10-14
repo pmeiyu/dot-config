@@ -26,8 +26,8 @@
 	a = add
 	b = branch
 	c = commit
-	c-proxy = clone --config "http.proxy=socks5://localhost:1080"
-	c1 = clone --depth 1
+	clone-1 = clone --depth 1
+	clone-proxy = clone --config "http.proxy=socks5://localhost:1080"
 	co = checkout
 	l = log --color --graph
 	p = pull
