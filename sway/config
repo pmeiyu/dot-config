@@ -235,6 +235,11 @@ bar {
 
 ## Input Devices
 
+input "type:keyboard" {
+    # Make Caps Lock key work as a Control key.
+    xkb_options ctrl:nocaps
+}
+
 input "type:mouse" {
     natural_scroll enabled
 }
