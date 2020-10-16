@@ -235,7 +235,12 @@ bar {
 
 ## Input Devices
 
-input "*" {
+input "type:mouse" {
+    natural_scroll enabled
+}
+
+input "type:touchpad" {
+    # Disable while typing.
     dwt enabled
     tap enabled
     natural_scroll enabled
