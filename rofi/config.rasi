@@ -1,0 +1,9 @@
+configuration {
+    modi: "combi,run,ssh";
+    combi-modi: "window,drun,run,ssh";
+    display-combi: "/";
+    display-drun: "app";
+    sidebar-mode: true;
+    theme: "Adapta-Nokto";
+    terminal: "alacritty";
+}
