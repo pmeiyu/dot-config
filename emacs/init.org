@@ -685,13 +685,6 @@
                    ("g" . helm-rg)))
    #+end_src
 
-   helm-ls-git
-   #+begin_src emacs-lisp
-     (use-package helm-ls-git
-       :ensure t
-       :after helm)
-   #+end_src
-
 ** Projectile
    #+begin_src emacs-lisp
      (use-package projectile
