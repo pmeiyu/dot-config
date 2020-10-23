@@ -244,6 +244,10 @@ input "type:mouse" {
     natural_scroll enabled
 }
 
+input "type:pointer" {
+    natural_scroll enabled
+}
+
 input "type:touchpad" {
     # Disable while typing.
     dwt enabled
