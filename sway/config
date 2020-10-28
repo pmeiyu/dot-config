@@ -182,14 +182,15 @@ bindsym $mod+r mode "resize"
 
 ## System controls
 
+set $loginctl loginctl
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (d) shutdown, (r) reboot
 mode "$mode_system" {
     bindsym --release l exec swaylock -c 000000, mode "default"
     bindsym --release e exit
-    bindsym --release s exec loginctl suspend, mode "default"
-    bindsym --release h exec loginctl hibernate, mode "default"
-    bindsym --release d exec loginctl poweroff, mode "default"
-    bindsym --release r exec loginctl reboot, mode "default"
+    bindsym --release s exec $loginctl suspend, mode "default"
+    bindsym --release h exec $loginctl hibernate, mode "default"
+    bindsym --release d exec $loginctl poweroff, mode "default"
+    bindsym --release r exec $loginctl reboot, mode "default"
 
     # Back to normal
     bindsym Return mode "default"
