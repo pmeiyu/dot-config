@@ -210,6 +210,7 @@ bindsym $mod+Escape mode "passthrough"
 ## Bar
 
 bar {
+    position top
     status_command i3status
 }
 
