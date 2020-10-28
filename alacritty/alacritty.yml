@@ -19,7 +19,7 @@ scrolling:
   history: 10000
 
 font:
-  size: 16.0
+  size: 18.0
 
 bell:
   animation: EaseOutExpo
