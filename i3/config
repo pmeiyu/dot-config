@@ -191,6 +191,11 @@ bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
+# Function keys
+bindsym XF86Display exec xrandr --auto
+bindsym XF86Tools exec gnome-control-center
+bindsym XF86Favorites exec true
+
 # Screenshot
 bindsym Print exec scrot "$(xdg-user-dir PICTURES)/Screenshot-%Y-%m-%d-%H%M%S.png"
 bindsym Shift+Print exec scrot -s -f "$(xdg-user-dir PICTURES)/Screenshot-%Y-%m-%d-%H%M%S.png"

@@ -209,6 +209,11 @@ bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
+# Function keys
+bindsym XF86Display output eDP-1 toggle
+bindsym XF86Tools exec gnome-control-center
+bindsym XF86Favorites exec true
+
 # Screenshot
 bindsym Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | wl-copy
 bindsym $mod+Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
