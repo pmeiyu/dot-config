@@ -70,6 +70,11 @@ fi
 # Nix
 # ==============================
 
+# Home Manager
+if [[ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]]; then
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+
 # Nix on foreign operating systems.
 if [[ -d /nix && ! -L /run/current-system/sw ]]; then
     PROFILES="/run/current-system/profile $HOME/.nix-profile"
