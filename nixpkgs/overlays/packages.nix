@@ -10,4 +10,9 @@ self: super:
       patches = [ ];
       doCheck = false;
     });
+
+  ncmpcpp = super.ncmpcpp.override {
+    visualizerSupport = true;
+    fftw = super.fftw;
+  };
 }
