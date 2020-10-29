@@ -886,7 +886,13 @@
              '(active-minibuffer-window
                rime-predicate-ace-window-p
                rime-predicate-prog-in-code-p))
-       (add-to-list 'rime-translate-keybindings "C-`"))
+       (add-to-list 'rime-translate-keybindings "C-`")
+
+       (defun my-telega-msg-p ()
+         "Check if the current point is on a telega message."
+         (string= "telega-msg-button"
+                  (symbol-name (get-text-property (point) 'category))))
+       (add-to-list 'rime-disable-predicates 'my-telega-msg-p))
    #+end_src
 
 * Programming
