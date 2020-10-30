@@ -548,6 +548,7 @@
     #+begin_src emacs-lisp
       (setq desktop-auto-save-timeout 600)
       (setq desktop-save t)
+      (setq desktop-dirname user-emacs-directory)
       (desktop-save-mode t)
     #+end_src
 
