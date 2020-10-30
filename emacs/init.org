@@ -398,7 +398,7 @@
 ** Dired
    #+begin_src emacs-lisp
      (setq dired-recursive-copies 'always)
-     (setq dired-recursive-deletes 'always)
+     (setq dired-recursive-deletes 'top)
 
      (require 'dired-x)
      (setq dired-clean-confirm-killing-deleted-buffers nil)
