@@ -167,7 +167,7 @@ end
 
 if status is-login
     # SSH
-    set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+    test -n $SSH_AUTH_SOCK || set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
 
     # Python
     set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
