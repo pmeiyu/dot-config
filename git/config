@@ -47,3 +47,5 @@
 
 [gc]
 	auto = 100
+[format]
+	coverLetter = auto
