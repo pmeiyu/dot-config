@@ -4,20 +4,6 @@
              (oop goops)
              ((ice-9 ftw) #:select (scandir)))
 
-(define %xdg-config-home
-  (or (getenv "XDG_CONFIG_HOME")
-      (string-append (or (getenv "HOME")
-                         (passwd:dir (getpwuid (getuid))))
-                     "/.config")))
-
-(define %log-directory
-  (string-append (or (getenv "HOME")
-                     (passwd:dir (getpwuid (getuid))))
-                 "/.local/log"))
-
-(unless (file-exists? %log-directory)
-  (mkdir %log-directory))
-
 ;; Send shepherd into background.  This should be done before respawnable
 ;; services are started in order to catch the SIGCHLD signal.
 (action 'shepherd 'daemonize)
@@ -29,7 +15,7 @@
     #:provides '(emacs emacs-daemon)
     #:start (make-forkexec-constructor
              '("emacs" "--fg-daemon")
-             #:log-file (string-append %log-directory "/emacs.log"))
+             #:log-file (string-append %user-log-dir "/emacs.log"))
     #:stop (make-kill-destructor)
     #:respawn? #t))
 
@@ -42,18 +28,14 @@
     #:provides '(mcron cron)
     #:start (make-forkexec-constructor
              '("mcron")
-             #:log-file (string-append %log-directory "/mcron.log"))
+             #:log-file (string-append %user-log-dir "/mcron.log"))
     #:stop (make-kill-destructor)
     #:respawn? #t))
 
 (register-services mcron)
 
-;; Services to start when shepherd starts.
-(define daemons
-  (list emacs mcron))
-
 ;; Load all the files in the directory 'init.d' with a suffix '.scm'.
-(let ((init-dir (string-append %xdg-config-home "/shepherd/init.d")))
+(let ((init-dir (string-append %user-config-dir "/init.d")))
   (for-each (lambda (file)
               (load (string-append init-dir "/" file)))
             (or (scandir init-dir
@@ -62,4 +44,5 @@
                 '())))
 
 ;; Start services.
-(for-each start daemons)
+;; (define daemons (list emacs mcron))
+;; (for-each start daemons)
