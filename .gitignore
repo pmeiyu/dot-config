@@ -12,11 +12,13 @@ local.*
 
 /emacs/*
 !/emacs/init.org
-/fish/completions/
+/fish/completions/*
+!/fish/completions/fisher.fish
 /fish/conf.d/*
 !/fish/conf.d/tmux.fish
 /fish/fish_variables
-/fish/functions/
+/fish/functions/*
+!/fish/functions/fisher.fish
 /gnupg/crls.d/
 /gnupg/openpgp-revocs.d/
 /gnupg/private-keys-v1.d/
@@ -26,7 +28,6 @@ local.*
 
 /QtProject.conf
 /autostart/
-/fisher/
 /gcloud/
 /htop/
 /hydroxide/
