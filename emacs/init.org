@@ -1610,7 +1610,7 @@
        ;; (setq mu4e-sent-messages-behavior 'delete)
 
        ;; Fetch email.
-       (setq mu4e-get-mail-command "offlineimap")
+       (setq mu4e-get-mail-command "fdm fetch")
 
        ;; Default context.
        (setq mu4e-maildir "~/Mail")
@@ -1622,7 +1622,7 @@
        (setq mu4e-maildir-shortcuts
              '(("/archive" . ?a)
                ("/drafts"  . ?d)
-               ("/INBOX"   . ?i)
+               ("/inbox"   . ?i)
                ("/sent"    . ?s)
                ("/spam"    . ?j)
                ("/trash"   . ?t)))
