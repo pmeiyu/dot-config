@@ -6,11 +6,11 @@ self: super:
     paths = with super.pkgs; [
       aria2
       badvpn
+      fdm
       graphviz
       msmtp
       mu
       ncmpcpp
-      offlineimap
       p7zip
       rclone
       youtube-dl
