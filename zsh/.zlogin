@@ -7,7 +7,7 @@
 # ==============================
 
 if [[ ! -S ${XDG_RUNTIME_DIR-/run/user/$(id -u)}/shepherd/socket ]]; then
-    shepherd
+    command -v shepherd >/dev/null && shepherd
 fi
 
 
