@@ -5,7 +5,7 @@ import subprocess
 def emacs_get_secret(domain, user):
     cmd = "emacsclient -e '(my-get-secret :domain \"{}\" :user \"{}\")'".format(domain, user)
     try:
-        secret = subprocess.check_output(cmd, shell=True).strip()
+        secret = subprocess.check_output(cmd, shell=True).decode(encoding="UTF-8").strip()
     except:
         return
     if secret == "nil":
