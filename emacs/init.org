@@ -1610,7 +1610,7 @@
        ;; (setq mu4e-sent-messages-behavior 'delete)
 
        ;; Fetch email.
-       (setq mu4e-get-mail-command "fdm fetch")
+       (setq mu4e-get-mail-command "fdm fetch -v")
 
        ;; Default context.
        (setq mu4e-maildir "~/Mail")
