@@ -464,7 +464,6 @@
     #+begin_src emacs-lisp
       ;; Turn on PGP
       (add-hook 'message-mode-hook 'epa-mail-mode)
-      (add-hook 'message-send-hook 'message-sign-encrypt-if-all-keys-available)
       (setq mml-secure-openpgp-encrypt-to-self t)
 
       ;; Message signature
