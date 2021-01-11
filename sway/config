@@ -286,6 +286,12 @@ exec swayidle -w \
 # Default transparency
 for_window [title=".*"] opacity 0.95
 
+# Browser
+for_window [app_id="Chromium-browser"] opacity 1.0
+for_window [class="Chromium-browser"] opacity 1.0
+for_window [app_id="firefox"] opacity 1.0
+for_window [class="Firefox"] opacity 1.0
+
 # Media viewer
 for_window [app_id="imv"] opacity 1.0
 for_window [app_id="mpv"] opacity 1.0
