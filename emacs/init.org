@@ -1416,6 +1416,23 @@
         (org-alert-enable))
     #+end_src
 
+*** org-roam
+    #+begin_src emacs-lisp
+      (use-package org-roam
+        :ensure t
+        :after org
+        :defer 10
+        :bind (:map org-roam-mode-map
+                    (("C-c r l" . org-roam)
+                     ("C-c r f" . org-roam-find-file)
+                     ("C-c r g" . org-roam-graph)
+                     ("C-c r i" . org-roam-insert)
+                     ("C-c r I" . org-roam-insert-immediate)))
+        :config
+        (setq org-roam-directory org-directory)
+        (org-roam-mode))
+    #+end_src
+
 *** ob-http
     #+begin_src emacs-lisp
       (use-package ob-http
