@@ -1154,7 +1154,9 @@
    #+begin_src emacs-lisp
      (use-package nix-mode
        :ensure t
-       :mode ("\\.nix\\'" . nix-mode))
+       :mode ("\\.nix\\'" . nix-mode)
+       :config
+       (setq nix-nixfmt-bin "nixpkgs-fmt"))
    #+end_src
 
 ** Powershell
