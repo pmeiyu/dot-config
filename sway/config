@@ -215,9 +215,9 @@ bindsym XF86Tools exec gnome-control-center
 bindsym XF86Favorites exec true
 
 # Screenshot
-bindsym Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | wl-copy
+bindsym Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | swappy -f -
+bindsym Shift+Print exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
-bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+Shift+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
 
 # Laptop lid
