@@ -8,7 +8,7 @@
 --output "%(title)s.%(id)s.%(ext)s"
 
 # User-Agent
---user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0"
 
 # Codec preference
 --format bestvideo[vcodec^=av01][height<=1080]+bestaudio[acodec=opus]/bestvideo+bestaudio/best
