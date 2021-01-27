@@ -13,6 +13,7 @@ self: super:
       ncmpcpp
       p7zip
       rclone
+      unrar
       youtube-dl
     ];
   };
