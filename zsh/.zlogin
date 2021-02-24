@@ -6,7 +6,8 @@
 # Shepherd
 # ==============================
 
-if [[ ! -S ${XDG_RUNTIME_DIR-/run/user/$(id -u)}/shepherd/socket ]]; then
+if [[ -d ${XDG_RUNTIME_DIR-/run/user/$(id -u)} &&
+          ! -S ${XDG_RUNTIME_DIR-/run/user/$(id -u)}/shepherd/socket ]]; then
     command -v shepherd >/dev/null && shepherd
 fi
 
