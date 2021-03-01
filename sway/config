@@ -303,42 +303,24 @@ for_window [app_id="qemu"] opacity 1.0
 for_window [app_id="virt-manager"] opacity 1.0
 
 
-## Workspaces
+## Workspace Layout
+
+# Default layout for new containers in an empty workspace
+workspace_layout tabbed
 
 # workspace 1: Terminal
-for_window [workspace=$ws1] layout tabbed
+workspace $ws1
+exec $terminal
 
 # workspace 2: Emacs
-for_window [workspace=$ws2] layout tabbed
 assign [class="Emacs"] $ws2
+exec emacs
 
 # workspace 3: Web
-for_window [workspace=$ws3] layout tabbed
 assign [app_id="firefox"] $ws3
 assign [app_id="icecat"] $ws3
 assign [app_id="keepass"] $ws3
 assign [class="Firefox"] $ws3
-
-# workspace 4: System
-for_window [workspace=$ws4] layout tabbed
-
-# workspace 5: File
-for_window [workspace=$ws5] layout tabbed
-
-# workspace 6: Media
-for_window [workspace=$ws6] layout tabbed
-
-# workspace 7
-for_window [workspace=$ws7] layout tabbed
-
-# workspace 8
-for_window [workspace=$ws8] layout tabbed
-
-# workspace 9
-for_window [workspace=$ws9] layout tabbed
-
-# workspace 10
-for_window [workspace=$ws10] layout tabbed
 
 
 ## Include extra configurations
