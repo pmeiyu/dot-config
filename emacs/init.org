@@ -368,6 +368,11 @@
       (add-hook 'prog-mode-hook 'my-prog-mode-setup)
     #+end_src
 
+** Search
+   #+begin_src emacs-lisp
+     (add-to-list 'completion-ignored-extensions ".jar")
+   #+end_src
+
 ** Spell Checking
    flyspell
    #+begin_src emacs-lisp
