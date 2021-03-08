@@ -181,11 +181,11 @@ mode "$mode_system" {
 bindsym $mod+z mode "$mode_system"
 bindsym XF86PowerOff mode "$mode_system"
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+# Audio volume controls
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioMicMute exec amixer -q set Capture toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
