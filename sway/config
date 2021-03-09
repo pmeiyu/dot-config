@@ -54,7 +54,7 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'"
 
 
-## Layout
+## Layout shortcuts
 
 # Split in horizontal orientation
 bindsym $mod+h split horizontal
@@ -71,7 +71,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 
-## Navigation
+## Navigation shortcuts
 
 # Change focus
 bindsym $mod+i focus up
@@ -114,7 +114,7 @@ bindsym $mod+u focus parent
 bindsym $mod+d focus child
 
 
-## Workspaces
+## Workspace shortcuts
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -154,7 +154,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 
-## Scratchpad
+## Scratchpad shortcuts
 
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -163,7 +163,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 
-## Resize containers
+## Resize shortcuts
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -180,7 +180,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-## System controls
+## System control shortcuts
 
 # Systemd
 set $systemctl systemctl
@@ -210,8 +210,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioMicMute exec amixer -q set Capture toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # Function keys
 bindsym XF86Display output eDP-1 toggle
@@ -225,8 +225,8 @@ bindsym $mod+Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(
 bindsym $mod+Shift+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
 
 # Laptop lid
-bindswitch --locked lid:off output "*" disable
-bindswitch --locked lid:on  output "*" enable
+bindswitch --locked lid:off output "eDP-1" dpms off
+bindswitch --locked lid:on  output "eDP-1" dpms on
 
 
 ## A special mode for passing through key bindings
@@ -235,6 +235,50 @@ mode "passthrough" {
     bindsym $mod+Escape mode "default"
 }
 bindsym $mod+Escape mode "passthrough"
+
+
+## Transparency
+
+# Default transparency
+for_window [title=".*"] opacity 0.95
+
+# Editor
+for_window [class="Emacs"] opacity 0.9
+
+# Browser
+for_window [app_id="Chromium-browser"] opacity 1.0
+for_window [class="Chromium-browser"] opacity 1.0
+for_window [app_id="firefox"] opacity 1.0
+for_window [class="Firefox"] opacity 1.0
+
+# Media viewer
+for_window [app_id="imv"] opacity 1.0
+for_window [app_id="mpv"] opacity 1.0
+for_window [title="[Pp]layer"] opacity 1.0
+for_window [title="[Vv]iewer"] opacity 1.0
+
+# Virtual machine
+for_window [app_id="qemu"] opacity 1.0
+for_window [app_id="virt-manager"] opacity 1.0
+
+# Remote desktop
+for_window [app_id="org.remmina.Remmina"] opacity 1.0
+for_window [title="FreeRDP"] opacity 1.0
+
+
+## Workspace layout
+
+# Default layout for new containers in an empty workspace
+workspace_layout tabbed
+
+# workspace 2: Emacs
+assign [class="Emacs"] $ws2
+
+# workspace 3: Web
+assign [app_id="firefox"] $ws3
+assign [app_id="icecat"] $ws3
+assign [app_id="keepass"] $ws3
+assign [class="Firefox"] $ws3
 
 
 ## Bar
@@ -248,8 +292,9 @@ bar {
 ## Input Devices
 
 input "type:keyboard" {
-    # Make Caps Lock key work as a Control key.
-    xkb_options ctrl:nocaps
+    # ctrl:nocaps Make CapsLock key behave as a Control key.
+    # shift:both_capslock Toggle CapsLock when both Shift keys are pressed together.
+    xkb_options ctrl:nocaps,shift:both_capslock
 }
 
 input "type:mouse" {
@@ -268,63 +313,25 @@ input "type:touchpad" {
 }
 
 
-## Wallpaper
+## Run programs
 
+# Wallpaper
 exec_always swaymsg output "*" background "$(find ~/Pictures/Wallpapers -type f | shuf -n 1)" fill
 
-
-## Idle configuration
+# Idle configuration
 
 # Turn off screens after 300 seconds of inactivity, and turn screens back on
 # when resumed.  Then lock screen after another 30 seconds.  It will also lock
 # screen before computer goes to sleep.
+set $lock 'swaylock -f -c 000000'
 exec swayidle -w \
          timeout 300 'swaymsg output "*" dpms off' \
              resume 'swaymsg output "*" dpms on' \
-         timeout 330 'swaylock -f -c 000000' \
-         before-sleep 'swaylock -f -c 000000'
+         timeout 330 $lock \
+         before-sleep $lock
 
-
-## Transparency
-
-# Default transparency
-for_window [title=".*"] opacity 0.95
-
-# Browser
-for_window [app_id="Chromium-browser"] opacity 1.0
-for_window [class="Chromium-browser"] opacity 1.0
-for_window [app_id="firefox"] opacity 1.0
-for_window [class="Firefox"] opacity 1.0
-
-# Media viewer
-for_window [app_id="imv"] opacity 1.0
-for_window [app_id="mpv"] opacity 1.0
-for_window [title="[Pp]layer"] opacity 1.0
-for_window [title="[Vv]iewer"] opacity 1.0
-
-# Virtual machine
-for_window [app_id="qemu"] opacity 1.0
-for_window [app_id="virt-manager"] opacity 1.0
-
-
-## Workspace Layout
-
-# Default layout for new containers in an empty workspace
-workspace_layout tabbed
-
-# workspace 1: Terminal
-workspace $ws1
-exec $terminal
-
-# workspace 2: Emacs
-assign [class="Emacs"] $ws2
-exec emacs
-
-# workspace 3: Web
-assign [app_id="firefox"] $ws3
-assign [app_id="icecat"] $ws3
-assign [app_id="keepass"] $ws3
-assign [class="Firefox"] $ws3
+# Input method engine
+exec ibus-daemon --xim --replace --daemonize
 
 
 ## Include extra configurations
