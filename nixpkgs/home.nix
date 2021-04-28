@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  home.stateVersion = "21.05";
+  news.display = "silent";
+
+  home.username = "meiyu";
+  home.homeDirectory = "/home/meiyu";
+
   home.packages = with pkgs; [
     local-packages
     command-line-packages
