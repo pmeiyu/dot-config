@@ -51,6 +51,7 @@ self: super:
       obs-studio
       opencc
       pandoc
+      unoconv
     ];
   };
 }
