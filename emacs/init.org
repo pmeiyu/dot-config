@@ -1500,7 +1500,12 @@
        ;; Do not wrap lines when editing msgstr.
        (add-hook 'po-subedit-mode-hook
                  (lambda ()
-                   (setq fill-column 1000))))
+                   (setq fill-column 1000)))
+
+       ;; Enable input method.
+       (add-hook 'po-subedit-mode-hook
+                 (lambda ()
+                   (toggle-input-method))))
    #+end_src
 
    Wrap po file
