@@ -919,7 +919,8 @@
        :ensure t
        :commands (lsp lsp-deferred lsp-mode)
        :config
-       (setq lsp-auto-guess-root t))
+       (setq lsp-auto-guess-root t)
+       (setq lsp-file-watch-threshold 100000))
    #+end_src
 
    lsp-ui
