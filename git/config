@@ -1,6 +1,6 @@
 [user]
 	name = Peng Mei Yu
-	email = i@pengmeiyu.com
+	email = pmy@xqzp.net
 
 [core]
 	autoCRLF = input
@@ -40,7 +40,7 @@
 
 [sendemail]
 	confirm = auto
-	bcc = i@pengmeiyu.com
+	bcc = pmy@xqzp.net
 
 	# Send email via local email relay
 	smtpServer = localhost
