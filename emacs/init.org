@@ -1,6 +1,6 @@
 #+Title: Emacs Configuration
 #+Author: Peng Mei Yu
-#+Email: i@pengmeiyu.com
+#+Email: pmy@xqzp.net
 #+Copyright: Copyright 2015-2021 Peng Mei Yu
 #+License: GPLv3
 
@@ -27,7 +27,7 @@
   Name and mail addresses
   #+begin_src emacs-lisp
     (setq user-full-name "Peng Mei Yu"
-          user-mail-address "i@pengmeiyu.com")
+          user-mail-address "pmy@xqzp.net")
   #+end_src
 
   Identities
@@ -484,7 +484,7 @@
     #+begin_src emacs-lisp :tangle no
       (setq message-send-mail-function 'message-smtpmail-send-it)
 
-      (setq smtpmail-smtp-server "smtp.mailgun.com"
+      (setq smtpmail-smtp-server "smtp.gmail.com"
             smtpmail-stream-type 'ssl  ;; StartTLS is evil.
             smtpmail-smtp-service 465)
     #+end_src
@@ -1644,17 +1644,17 @@
        ;; Default context.
        (setq mu4e-maildir "~/Mail")
        (setq mu4e-drafts-folder "/drafts")
-       (setq mu4e-refile-folder "/archive")
+       (setq mu4e-refile-folder "/archive/inbox")
        (setq mu4e-sent-folder   "/sent")
        (setq mu4e-trash-folder  "/trash")
 
        (setq mu4e-maildir-shortcuts
-             '(("/archive" . ?a)
-               ("/drafts"  . ?d)
-               ("/inbox"   . ?i)
-               ("/sent"    . ?s)
-               ("/spam"    . ?j)
-               ("/trash"   . ?t)))
+             '(("/archive/inbox" . ?a)
+               ("/drafts"        . ?d)
+               ("/inbox"         . ?i)
+               ("/sent"          . ?s)
+               ("/spam"          . ?j)
+               ("/trash"         . ?t)))
 
        (add-to-list 'mu4e-headers-actions
                     '("git apply mbox" . mu4e-action-git-apply-mbox) t)
