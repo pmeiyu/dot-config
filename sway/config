@@ -225,8 +225,8 @@ bindsym $mod+Print exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(
 bindsym $mod+Shift+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/$(date +Screenshot-%Y-%m-%d-%H%M%S.png)"
 
 # Laptop lid
-bindswitch --locked lid:off output "eDP-1" dpms off
-bindswitch --locked lid:on  output "eDP-1" dpms on
+bindswitch --locked --reload lid:on  output "eDP-1" disable
+bindswitch --locked --reload lid:off output "eDP-1" enable
 
 
 ## A special mode for passing through key bindings
