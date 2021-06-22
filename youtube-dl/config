@@ -5,13 +5,13 @@
 --download-archive ~/.local/log/youtube-dl.log
 
 # File name template
---output "%(title)s.%(id)s.%(ext)s"
+--output "%(title)s.%(id)s.%(resolution)s.%(ext)s"
 
 # User-Agent
 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0"
 
 # Codec preference
---format bestvideo[vcodec^=av01][height<=1080]+bestaudio[acodec=opus]/bestvideo+bestaudio/best
+--format bestvideo[vcodec^=av01][height<=720]+bestaudio[acodec=opus]/bestvideo[height<=720]+bestaudio[acodec=opus]/bestvideo+bestaudio/best
 
 # Prefer free video formats unless a specific one is requested.
 --prefer-free-formats
