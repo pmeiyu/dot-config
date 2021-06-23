@@ -1006,7 +1006,10 @@
        (setq geiser-active-implementations '(guile))
        (setq geiser-mode-start-repl-p t)
        (setq geiser-repl-history-filename
-             (expand-file-name "geiser_history" user-emacs-directory)))
+             (expand-file-name "geiser_history" user-emacs-directory))
+
+       (use-package geiser-guile
+         :ensure t))
    #+end_src
 
    Guix
