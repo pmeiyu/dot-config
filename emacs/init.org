@@ -1487,10 +1487,8 @@
 ** Markdown
    #+begin_src emacs-lisp
      (use-package markdown-mode
-       :ensure nil
-       :mode (("\\.md\\'" . markdown-mode)
-              ("\\.markdown\\'" . markdown-mode)
-              ("README\\.md\\'" . gfm-mode)))
+       :ensure t
+       :mode ("\\.md\\'" . markdown-mode))
    #+end_src
 
 ** po-mode
