@@ -52,6 +52,7 @@ self: super:
 
   my-python = super.python3.withPackages (python-packages:
     with python-packages; [
+      beautifulsoup4
       ipython
       matplotlib
       numpy
