@@ -7,18 +7,6 @@
 	safeCRLF = warn
 	editor = emacsclient
 
-[commit]
-	gpgSign = false
-
-[push]
-	default = simple
-
-[pull]
-	ff = only
-
-[status]
-	submoduleSummary = true
-
 [color]
 	ui = auto
 
@@ -34,9 +22,20 @@
 	s = status
 	undo = reset --soft HEAD^
 
-[http]
-	# proxy = http://localhost:8080
-	# proxy = socks5://localhost:1080
+[commit]
+	gpgSign = false
+
+[push]
+	default = simple
+
+[pull]
+	ff = only
+
+[status]
+	submoduleSummary = true
+
+[format]
+	coverLetter = auto
 
 [sendemail]
 	confirm = auto
@@ -47,5 +46,7 @@
 
 [gc]
 	auto = 100
-[format]
-	coverLetter = auto
+
+[http]
+	# proxy = http://localhost:8080
+	# proxy = socks5://localhost:1080
