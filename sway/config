@@ -315,6 +315,9 @@ input "type:touchpad" {
 
 ## Run programs
 
+exec dbus-update-activation-environment WAYLAND_DISPLAY
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY
+
 # Wallpaper
 exec_always swaymsg output "*" background "$(find ~/Pictures/Wallpapers -type f | shuf -n 1)" fill
 
