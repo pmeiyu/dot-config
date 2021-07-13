@@ -116,6 +116,15 @@ fi
 
 
 # ==============================
+# Load local configurations
+# ==============================
+
+if [[ -f $ZSH_HOME/local-profile.sh ]]; then
+    source $ZSH_HOME/local-profile.sh
+fi
+
+
+# ==============================
 # Tmux
 # ==============================
 
@@ -128,13 +137,4 @@ then
     else
         exec tmux new-session
     fi
-fi
-
-
-# ==============================
-# Load local configurations
-# ==============================
-
-if [[ -f $ZSH_HOME/local-profile.sh ]]; then
-    source $ZSH_HOME/local-profile.sh
 fi
