@@ -45,7 +45,7 @@
 	smtpServer = localhost
 
 [gc]
-	auto = 100
+	auto = 1000
 
 [http]
 	# proxy = http://localhost:8080
