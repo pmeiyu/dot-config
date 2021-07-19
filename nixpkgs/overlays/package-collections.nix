@@ -5,15 +5,18 @@ self: super:
     name = "command-line-packages";
     paths = with super.pkgs; [
       aria2
-      badvpn
       fdm
       graphviz
+      httpie
+      jq
       msmtp
       mu
       ncmpcpp
-      p7zip
       rclone
+      xmlstarlet
+      you-get
       youtube-dl
+      yq
     ];
   };
 
@@ -22,6 +25,7 @@ self: super:
     paths = with super.pkgs; [
       dmidecode
       lm_sensors
+      nvme-cli
       powertop
       smartmontools
     ];
