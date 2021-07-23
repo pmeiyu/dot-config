@@ -1433,15 +1433,25 @@
         :ensure t
         :after org
         :defer 10
-        :bind (:map org-roam-mode-map
-                    (("C-c r l" . org-roam)
-                     ("C-c r f" . org-roam-find-file)
-                     ("C-c r g" . org-roam-graph)
-                     ("C-c r i" . org-roam-insert)
-                     ("C-c r I" . org-roam-insert-immediate)))
+        :bind (("C-c r l" . org-roam-buffer-toggle)
+               ("C-c r f" . org-roam-node-file)
+               ("C-c r g" . org-roam-graph)
+               ("C-c r c" . org-roam-capture)
+               ("C-c r i" . org-roam-node-insert))
         :config
         (setq org-roam-directory org-directory)
-        (org-roam-mode))
+        (setq org-roam-capture-templates
+              `(("i" "inbox" entry nil
+                 :if-new (file+olp ,my-org-inbox-file ())
+                 :unnarrowed t)
+                ("j" "journal" entry nil
+                 :if-new (file+olp ,org-default-notes-file ("Journal"))
+                 :unnarrowed t)
+                ("t" "todo" entry nil
+                 :if-new (file+olp ,org-default-notes-file ("Agenda"))
+                 :unnarrowed t)))
+        (setq org-roam-v2-ack t)
+        (org-roam-setup))
     #+end_src
 
 *** ob-http
