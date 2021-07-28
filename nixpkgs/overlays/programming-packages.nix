@@ -5,6 +5,7 @@ self: super:
     name = "programming-packages-all";
     paths = with super.pkgs; [
       programming-packages-tools
+      programming-packages-bash
       programming-packages-c
       programming-packages-go
       programming-packages-java
@@ -21,23 +22,41 @@ self: super:
       gettext
       gitFull
       gnumake
+    ];
+  };
+
+  programming-packages-bash = super.pkgs.buildEnv {
+    name = "programming-packages-bash";
+    paths = with super.pkgs; [
       nodePackages.bash-language-server
+      shellcheck
     ];
   };
 
   programming-packages-c = super.pkgs.buildEnv {
     name = "programming-packages-c";
-    paths = with super.pkgs; [ clang-tools gcc ];
+    paths = with super.pkgs; [
+      clang-tools
+      gcc
+    ];
   };
 
   programming-packages-go = super.pkgs.buildEnv {
     name = "programming-packages-go";
-    paths = with super.pkgs; [ go go-langserver ];
+    paths = with super.pkgs; [
+      go
+      gopls
+    ];
   };
 
   programming-packages-java = super.pkgs.buildEnv {
     name = "programming-packages-java";
-    paths = with super.pkgs; [ gradle maven ];
+    paths = with super.pkgs; [
+      gradle
+      jdk
+      maven
+      visualvm
+    ];
   };
 
   programming-packages-nodejs = super.pkgs.buildEnv {
@@ -61,7 +80,7 @@ self: super:
       pillow
       pip
       ptpython
-      python-language-server
+      python-lsp-server
       pytz
       requests
       sqlalchemy
@@ -69,7 +88,9 @@ self: super:
 
   programming-packages-python = super.pkgs.buildEnv {
     name = "programming-packages-python";
-    paths = with super.pkgs; [ my-python ];
+    paths = with super.pkgs; [
+      my-python
+    ];
   };
 
   programming-packages-rust = super.pkgs.buildEnv {

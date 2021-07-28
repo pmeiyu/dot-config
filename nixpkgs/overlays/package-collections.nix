@@ -7,15 +7,11 @@ self: super:
       aria2
       fdm
       graphviz
-      httpie
       jq
       msmtp
       mu
-      ncmpcpp
       rclone
       xmlstarlet
-      you-get
-      youtube-dl
       yq
     ];
   };
@@ -26,8 +22,46 @@ self: super:
       dmidecode
       lm_sensors
       nvme-cli
+      pciutils
       powertop
       smartmontools
+      usbutils
+    ];
+  };
+
+  multimedia-packages = super.pkgs.buildEnv {
+    name = "multimedia-packages";
+    paths = with super.pkgs; [
+      beets
+      exiftool
+      ffmpeg
+      handbrake
+      imagemagick7
+      mkvtoolnix
+      mpc_cli
+      mpd
+      mpv
+      ncmpcpp
+      picard
+      vlc
+      you-get
+      youtube-dl
+    ];
+  };
+
+  network-packages = super.pkgs.buildEnv {
+    name = "network-packages";
+    paths = with super.pkgs; [
+      curl
+      dnsutils
+      httpie
+      mitmproxy
+      nethogs
+      ngrep
+      nmap
+      socat
+      tcpdump
+      wireshark
     ];
   };
 
