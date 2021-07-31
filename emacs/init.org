@@ -1438,6 +1438,8 @@
                ("C-c r g" . org-roam-graph)
                ("C-c r c" . org-roam-capture)
                ("C-c r i" . org-roam-node-insert))
+        :init
+        (setq org-roam-v2-ack t)
         :config
         (setq org-roam-directory org-directory)
         (setq org-roam-capture-templates
@@ -1450,7 +1452,6 @@
                 ("t" "todo" entry nil
                  :if-new (file+olp ,org-default-notes-file ("Agenda"))
                  :unnarrowed t)))
-        (setq org-roam-v2-ack t)
         (org-roam-setup))
     #+end_src
 
