@@ -17,7 +17,7 @@
                  project))
 
 (list (channel
-       (inherit (car %default-channels))
+       (inherit %default-guix-channel)
        (url (project-directory "guix")))
       (channel
        (name 'my-packages)
