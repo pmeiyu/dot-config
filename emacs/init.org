@@ -1743,6 +1743,8 @@
        (setq elfeed-db-directory
              (expand-file-name "elfeed" (xdg-data-home)))
 
+       (setq elfeed-search-title-max-width 120)
+
        (use-package elfeed-org
          :ensure t
          :after elfeed
