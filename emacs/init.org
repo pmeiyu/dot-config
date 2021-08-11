@@ -604,11 +604,11 @@
 ** Transparency
    alpha '(<active> . <inactive>)
    #+begin_src emacs-lisp :tangle no
-     (set-frame-parameter (selected-frame) 'alpha '(95 . 60))
+     (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
    #+end_src
 
-   #+begin_src emacs-lisp
-     (add-to-list 'default-frame-alist '(alpha . (98 . 80)))
+   #+begin_src emacs-lisp :tangle no
+     (add-to-list 'default-frame-alist '(alpha . (98 . 90)))
    #+end_src
 
 ** Mode line
