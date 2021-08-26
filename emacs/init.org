@@ -230,9 +230,9 @@
    #+end_src
 
 ** Key bindings
-   yes-or-no-p
+   Let ‘yes-or-no-p’ use shorter answers "y" or "n".
    #+begin_src emacs-lisp
-     (defalias 'yes-or-no-p 'y-or-n-p)
+     (setq use-short-answers t)
    #+end_src
 
    Disable dialog boxes.
