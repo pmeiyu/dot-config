@@ -243,6 +243,7 @@ bindsym $mod+Escape mode "passthrough"
 for_window [title=".*"] opacity 0.95
 
 # Editor
+for_window [app_id="emacs"] opacity 0.9
 for_window [class="Emacs"] opacity 0.9
 
 # Browser
@@ -272,6 +273,7 @@ for_window [title="FreeRDP"] opacity 1.0
 workspace_layout tabbed
 
 # workspace 2: Emacs
+assign [app_id="emacs"] $ws2
 assign [class="Emacs"] $ws2
 
 # workspace 3: Web
