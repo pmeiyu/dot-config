@@ -3,7 +3,8 @@ configuration {
     combi-modi: "window,drun,run,ssh";
     display-combi: "/";
     display-drun: "app";
+    show-icons: true;
     sidebar-mode: true;
-    theme: "Adapta-Nokto";
+    theme: "android_notification";
     terminal: "alacritty";
 }
