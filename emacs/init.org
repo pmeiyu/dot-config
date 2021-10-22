@@ -1349,6 +1349,8 @@
                      '("sscheme" . "src scheme") t)
         (add-to-list 'org-structure-template-alist
                      '("sshell" . "src sh") t)
+        (add-to-list 'org-structure-template-alist
+                     '("shttp" . "src http") t)
 
         ;;; org-clock
         ;; Persist the running clock and all clock history
@@ -1459,7 +1461,11 @@
       (use-package ob-http
         :ensure t
         :after (ob)
-        :mode ("\\.http\\'" . org-mode))
+        :mode ("\\.http\\'" . org-mode)
+        :config
+        (org-babel-do-load-languages
+         'org-babel-load-languages
+         '((http . t))))
     #+end_src
 
 *** ox-hugo
