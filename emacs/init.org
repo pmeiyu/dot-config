@@ -845,14 +845,9 @@
 
     Git modes
     #+begin_src emacs-lisp
-      (use-package gitconfig-mode
+      (use-package git-modes
         :ensure t
-        :mode ("/\\.gitconfig\\'" "/\\.git/config\\'" "/git/config\\'"
-               "/\\.gitmodules\\'"))
-
-      (use-package gitignore-mode
-        :ensure t
-        :mode ("/\\.gitignore\\'" "/\\.git/info/exclude\\'" "/git/ignore\\'"))
+        :defer 10)
     #+end_src
 
 *** diff-hl
