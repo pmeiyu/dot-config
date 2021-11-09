@@ -1345,6 +1345,8 @@
         (add-to-list 'org-structure-template-alist
                      '("sshell" . "src sh") t)
         (add-to-list 'org-structure-template-alist
+                     '("ssql" . "src sql") t)
+        (add-to-list 'org-structure-template-alist
                      '("shttp" . "src http") t)
 
         ;;; org-clock
