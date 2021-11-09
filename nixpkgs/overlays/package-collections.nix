@@ -34,7 +34,7 @@ self: super:
     paths = with super.pkgs; [
       beets
       exiftool
-      ffmpeg
+      ffmpeg-full
       handbrake
       imagemagick7
       mkvtoolnix
