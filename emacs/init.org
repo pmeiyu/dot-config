@@ -561,7 +561,7 @@
       (setq recentf-auto-cleanup 'never)
       (setq recentf-exclude
             (mapcar 'expand-file-name
-                    (list "/gnu" "/nix" "/tmp" "/ssh:" "~/.cache"
+                    (list "/gnu" "/nix" "/run" "/tmp" "/ssh:" "~/.cache"
                           package-user-dir)))
       (recentf-mode 1)
     #+end_src
