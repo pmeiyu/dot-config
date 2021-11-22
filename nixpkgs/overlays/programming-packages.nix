@@ -81,7 +81,6 @@ self: super:
       pip
       ptpython
       python-lsp-server
-      pytz
       requests
       sqlalchemy
     ]);
