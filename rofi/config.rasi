@@ -5,6 +5,7 @@ configuration {
     display-drun: "app";
     show-icons: true;
     sidebar-mode: true;
-    theme: "android_notification";
     terminal: "alacritty";
 }
+
+@theme "android_notification"
