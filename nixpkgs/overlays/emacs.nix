@@ -9,7 +9,6 @@ in
 {
   emacsGit = pkgs.emacsGit;
   emacsGit-nox = pkgs.emacsGit-nox;
-  emacsPgtk = pkgs.emacsPgtk;
   emacsUnstable = pkgs.emacsUnstable;
   emacsUnstable-nox = pkgs.emacsUnstable-nox;
 }
