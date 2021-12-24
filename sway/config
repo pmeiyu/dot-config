@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # Variables
-set $terminal alacritty
+set $terminal foot
 set $launcher rofi -show combi
 
 # Font
