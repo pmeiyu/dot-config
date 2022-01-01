@@ -39,7 +39,7 @@
 
 [sendemail]
 	confirm = auto
-	bcc = pmy@xqzp.net
+	# bcc = pmy@xqzp.net
 
 	# Send email via local email relay
 	smtpServer = localhost
