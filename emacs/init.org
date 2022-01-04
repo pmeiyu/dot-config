@@ -1,7 +1,7 @@
 #+Title: Emacs Configuration
 #+Author: Peng Mei Yu
 #+Email: pmy@xqzp.net
-#+Copyright: Copyright 2015-2021 Peng Mei Yu
+#+Copyright: Copyright 2015-2022 Peng Mei Yu
 #+License: GPLv3
 
 #+PROPERTY: header-args+ :results silent
@@ -914,7 +914,8 @@
        :commands (lsp lsp-deferred lsp-mode)
        :config
        (setq lsp-auto-guess-root t)
-       (setq lsp-file-watch-threshold 100000))
+       (setq lsp-file-watch-threshold 100000)
+       (add-hook 'lsp-mode-hook #'lsp-lens-mode))
    #+end_src
 
    lsp-ui
@@ -933,7 +934,8 @@
    #+begin_src emacs-lisp
      (use-package dap-mode
        :ensure t
-       :commands (dap-mode dap-ui-mode dap-tooltip-mode))
+       :commands (dap-mode dap-ui-mode dap-tooltip-mode)
+       :config (dap-auto-configure-mode))
    #+end_src
 
    helm-lsp
@@ -1129,7 +1131,11 @@
    #+begin_src emacs-lisp
      (use-package lsp-java
        :ensure nil
-       :hook (java-mode . lsp-deferred))
+       :hook (java-mode . lsp-deferred)
+       :config
+       (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+       (setq lsp-java-save-actions-organize-imports t)
+       (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"))
    #+end_src
 
 ** JavaScript
