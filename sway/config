@@ -166,6 +166,7 @@ bindsym $mod+minus scratchpad show
 ## Resize shortcuts
 
 # Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
     # Resize window
     bindsym Left resize shrink width 10 px or 10 ppt
@@ -177,7 +178,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
 
 
 ## System control shortcuts
@@ -188,6 +188,8 @@ set $systemctl systemctl
 # set $systemctl loginctl
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (d) shutdown, (r) reboot
+bindsym $mod+z mode "$mode_system"
+bindsym XF86PowerOff mode "$mode_system"
 mode "$mode_system" {
     bindsym --release l exec swaylock -c 000000, mode "default"
     bindsym --release e exit
@@ -200,16 +202,14 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+z mode "$mode_system"
-bindsym XF86PowerOff mode "$mode_system"
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
+# Audio control keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# Sreen brightness controls
+# Sreen brightness control keys
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
@@ -229,12 +229,22 @@ bindswitch --locked --reload lid:on  output "eDP-1" disable
 bindswitch --locked --reload lid:off output "eDP-1" enable
 
 
-## A special mode for passing through key bindings
+## A special mode for passing through raw keys
 
+bindsym $mod+Escape mode "passthrough"
 mode "passthrough" {
     bindsym $mod+Escape mode "default"
 }
-bindsym $mod+Escape mode "passthrough"
+
+
+## Notification
+bindsym $mod+n mode "notification"
+mode "notification" {
+     bindsym Escape mode default
+     bindsym Return exec dunstctl action; exec dunstctl close; mode default
+     bindsym d exec dunstctl close; mode default
+     bindsym Shift+d exec dunstctl close-all; mode default
+}
 
 
 ## Transparency
@@ -261,6 +271,7 @@ for_window [title="[Vv]iewer"] opacity 1.0
 # Virtual machine
 for_window [app_id="qemu"] opacity 1.0
 for_window [app_id="virt-manager"] opacity 1.0
+for_window [app_id="looking-glass-client"] opacity 1.0; floating enable
 
 # Remote desktop
 for_window [app_id="org.remmina.Remmina"] opacity 1.0
@@ -342,3 +353,9 @@ exec ibus-daemon --xim --replace --daemonize
 ## Include extra configurations
 
 include local.$(hostname).conf
+
+
+## Update D-Bus environment variables
+
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec systemd-notify --ready
