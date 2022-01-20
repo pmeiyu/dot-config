@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
   news.display = "silent";
 
   home.username = "meiyu";
