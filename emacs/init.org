@@ -32,7 +32,7 @@
 
   Identities
   #+begin_src emacs-lisp
-    (setq my-irc-nick "pengmeiyu")
+    (setq my-irc-nick "pmy")
   #+end_src
 
 * Bootstrap
