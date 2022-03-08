@@ -21,7 +21,7 @@
     enable = true;
     package = pkgs.firefox-esr;
     profiles = {
-      default = {
+      "default.profile" = {
         id = 0;
         settings = {
           "browser.aboutConfig.showWarning" = false;
