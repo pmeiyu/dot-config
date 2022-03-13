@@ -90,9 +90,11 @@
 
    Load packages managed by Guix.
    #+begin_src emacs-lisp
-     (let ((path "~/.guix-profile/share/emacs/site-lisp"))
-       (if (file-exists-p path)
-           (add-to-list 'load-path path)))
+     (unless (require 'guix-emacs nil t)
+       (let ((default-directory "~/.guix-profile/share/emacs/site-lisp/"))
+         (when (file-accessible-directory-p default-directory)
+           (normal-top-level-add-to-load-path '("."))
+           (normal-top-level-add-subdirs-to-load-path))))
    #+end_src
 
 ** Bootstrap use-package
