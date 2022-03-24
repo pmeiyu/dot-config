@@ -23,6 +23,12 @@
 * init.el
   Use ~M-x org-babel-tangle~ or ~C-c C-v t~ to manually extract lisp code.
 
+* Pre init
+  Load an optional pre init file.
+  #+begin_src emacs-lisp
+    (load (locate-user-emacs-file "local.pre.init.el") 'noerror)
+  #+end_src
+
 * Personal Information
   Name and mail addresses
   #+begin_src emacs-lisp
@@ -1880,8 +1886,8 @@
          :init (load-theme 'spacemacs-dark t)))
    #+end_src
 
-* local.init.el
-  Load an optional local init file
+* Post init
+  Load an optional post init file.
   #+begin_src emacs-lisp
-    (load (locate-user-emacs-file "local.init.el") 'noerror)
+    (load (locate-user-emacs-file "local.post.init.el") 'noerror)
   #+end_src
