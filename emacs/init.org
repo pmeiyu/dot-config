@@ -1727,10 +1727,10 @@
        (defun my-erc-start-or-switch ()
          "Connect to ERC, or switch to last active buffer."
          (interactive)
-         (if (get-buffer "irc.freenode.net:6697")
+         (if (get-buffer "irc.libera.chat:6697")
              (erc-track-switch-buffer 1)
            (when (y-or-n-p "Start ERC? ")
-             (erc-tls :server "irc.freenode.net" :port 6697
+             (erc-tls :server "irc.libera.chat" :port 6697
                       :nick my-irc-nick)))))
    #+end_src
 
