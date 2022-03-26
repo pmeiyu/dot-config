@@ -1,11 +1,42 @@
 # Temporary files
+*.out
 *~
+.cache
 \#*#
 
 # MacOS
 .DS_Store
 ._*
 
+# Log files
+*.log
+
+# Package files
+*.7z
+*.gz
+*.lz
+*.nar
+*.rar
+*.tar
+*.xz
+*.zip
+
+# Database files
+*.sqlar
+*.sqlite
+
+# Emacs lisp
+*.elc
+
+# Java
+*.class
+*.jar
+
 # Python
-*.pyc
+*.py[cod]
 __pycache__/
+.venv/
+
+# JetBrains editor
+*.iml
+.idea/
