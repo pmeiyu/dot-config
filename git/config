@@ -2,14 +2,6 @@
 	name = Peng Mei Yu
 	email = pmy@xqzp.net
 
-[core]
-	autoCRLF = input
-	safeCRLF = warn
-	editor = emacsclient
-
-[color]
-	ui = auto
-
 [alias]
 	a = add
 	b = branch
@@ -22,27 +14,19 @@
 	s = status
 	undo = reset --soft HEAD^
 
+[color]
+	ui = auto
+
 [commit]
 	gpgSign = false
 
-[push]
-	default = simple
-
-[pull]
-	ff = only
-
-[status]
-	submoduleSummary = true
+[core]
+	autoCRLF = input
+	safeCRLF = warn
+	editor = emacsclient
 
 [format]
 	coverLetter = auto
-
-[sendemail]
-	confirm = auto
-	# bcc = pmy@xqzp.net
-
-	# Send email via local email relay
-	smtpServer = localhost
 
 [gc]
 	auto = 1000
@@ -50,3 +34,21 @@
 [http]
 	# proxy = http://localhost:8080
 	# proxy = socks5://localhost:1080
+
+[init]
+	defaultBranch = master
+
+[pull]
+	ff = only
+
+[push]
+	default = simple
+
+[sendemail]
+	confirm = auto
+
+	# Send email via local email relay
+	smtpServer = localhost
+
+[status]
+	submoduleSummary = true
