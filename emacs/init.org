@@ -987,8 +987,17 @@
        :defer 20
        :diminish yas-minor-mode
        :config
-       (add-to-list 'yas-snippet-dirs "~/Projects/guix/etc/snippets")
+       (let ((dir "~/Projects/guix/etc/snippets"))
+         (when (file-directory-p dir)
+           (add-to-list 'yas-snippet-dirs dir)))
+
        (yas-global-mode 1))
+   #+end_src
+
+   #+begin_src emacs-lisp
+     (use-package yasnippet-snippets
+       :ensure t
+       :after yasnippet)
    #+end_src
 
 ** Lisp
