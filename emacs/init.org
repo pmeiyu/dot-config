@@ -605,7 +605,7 @@
      (use-package zenburn-theme
        :ensure t
        :config
-       (load-theme 'zenburn))
+       (load-theme 'zenburn 'no-confirm))
    #+end_src
 
 ** Transparency
@@ -1883,7 +1883,7 @@
        (use-package spacemacs-theme
          :ensure t
          :defer t
-         :init (load-theme 'spacemacs-dark t)))
+         :init (load-theme 'spacemacs-dark 'no-confirm)))
    #+end_src
 
 * Post init
