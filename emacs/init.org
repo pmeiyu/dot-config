@@ -920,6 +920,8 @@
      (use-package lsp-mode
        :ensure t
        :commands (lsp lsp-deferred lsp-mode)
+       :init
+       (setq lsp-keymap-prefix "C-c l")
        :config
        (setq lsp-auto-guess-root t)
        (setq lsp-file-watch-threshold 100000)
@@ -1318,7 +1320,7 @@
         :mode ("\\.org\\'" . org-mode)
         :bind (("C-c a" . org-agenda)
                ("C-c c" . org-capture)
-               ("C-c l" . org-store-link)
+               ("C-c o l" . org-store-link)
                ("C-c C-," . org-insert-structure-template))
         :config
         (setq org-directory "~/Sync/Org")
