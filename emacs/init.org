@@ -1041,11 +1041,6 @@
      (add-hook 'sh-mode-hook 'lsp-deferred)
    #+end_src
 
-   Install bash language server
-   #+begin_src sh
-     npm -i -g bash-language-server
-   #+end_src
-
 ** C
    #+begin_src emacs-lisp
      (setq c-default-style "linux")
@@ -1131,11 +1126,6 @@
      (add-hook 'go-mode-hook 'lsp-deferred)
    #+end_src
 
-   Install go language server
-   #+begin_src sh
-     go get -u golang.org/x/tools/cmd/gopls
-   #+end_src
-
 ** Java
    java-mode
    #+begin_src emacs-lisp
@@ -1161,12 +1151,6 @@
    Language server
    #+begin_src emacs-lisp
      (add-hook 'js-mode-hook 'lsp-deferred)
-   #+end_src
-
-   Install JavaScript language server
-   #+begin_src sh
-     npm i -g typescript
-     npm i -g typescript-language-server
    #+end_src
 
 ** Kotlin
@@ -1221,11 +1205,6 @@
      (add-hook 'python-mode-hook 'lsp-deferred)
    #+end_src
 
-   Install python language server
-   #+begin_src sh
-     pip3 install python-language-server[all]
-   #+end_src
-
 ** Rust
    rust-mode
    #+begin_src emacs-lisp
@@ -1239,11 +1218,6 @@
    Language server
    #+begin_src emacs-lisp
      (add-hook 'rust-mode-hook 'lsp-deferred)
-   #+end_src
-
-   Install Rust language server
-   #+begin_src sh
-     rustup component add rls rust-analysis rust-src rustfmt
    #+end_src
 
 ** SQL
@@ -1260,11 +1234,6 @@
     Language server
     #+begin_src emacs-lisp
       (add-hook 'css-mode-hook 'lsp-deferred)
-    #+end_src
-
-    Install CSS language server
-    #+begin_src sh
-      npm install -g vscode-css-languageserver-bin
     #+end_src
 
 *** HTML
@@ -1287,11 +1256,6 @@
       (add-hook 'html-mode-hook 'lsp-deferred)
     #+end_src
 
-    Install HTML language server
-    #+begin_src sh
-      npm install -g vscode-html-languageserver-bin
-    #+end_src
-
 *** Vue
     vue-mode
     #+begin_src emacs-lisp
@@ -1303,11 +1267,6 @@
     Language server
     #+begin_src emacs-lisp
       (add-hook 'vue-mode-hook 'lsp-deferred)
-    #+end_src
-
-    Install Vue language server
-    #+begin_src sh
-      npm install -g vue-language-server
     #+end_src
 
 * File formats
@@ -1618,14 +1577,6 @@
    Language server
    #+begin_src emacs-lisp
      (add-hook 'nxml-mode-hook 'lsp-deferred)
-
-     (setq lsp-xml-jar-file
-           (expand-file-name "org.eclipse.lsp4xml.jar" user-emacs-directory))
-   #+end_src
-
-   Install XML language server
-   #+begin_src sh
-     # Download from https://github.com/angelozerr/lsp4xml/releases
    #+end_src
 
 * Internet
