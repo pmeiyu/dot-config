@@ -10,6 +10,7 @@
 	clone-1 = clone --depth 1
 	clone-proxy = clone --config "http.proxy=socks5://localhost:1080"
 	co = checkout
+	exec = "!f() { \"$@\" ; }; f"
 	l = log --color --graph
 	p = pull
 	s = status
