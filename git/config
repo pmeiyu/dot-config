@@ -4,7 +4,7 @@
 
 [alias]
 	a = add
-	all = "!f() { find . -type d -name .git -exec echo {} \\; -execdir git \"$@\" \\; ; }; f"
+	all = "!f() { find . -type d -name .git -exec echo -e '\\n{}' \\; -execdir git \"$@\" \\; ; }; f"
 	b = branch
 	c = commit
 	clone-1 = clone --depth 1
