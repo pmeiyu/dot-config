@@ -202,10 +202,6 @@ bindsym Shift+Print exec scrot -s -f "$(xdg-user-dir PICTURES)/Screenshot-%Y-%m-
 bindsym $mod+Print exec scrot "$(xdg-user-dir PICTURES)/Screenshot-%Y-%m-%d-%H%M%S.png"
 bindsym $mod+Shift+Print exec scrot -s -f "$(xdg-user-dir PICTURES)/Screenshot-%Y-%m-%d-%H%M%S.png"
 
-# Laptop lid
-bindswitch --locked lid:off output "*" disable
-bindswitch --locked lid:on  output "*" enable
-
 
 ## A special mode for passing through key bindings
 
