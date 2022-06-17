@@ -157,6 +157,11 @@ if status is-login
                 break
             end
         end
+
+        # Home Manager
+        if functions -q fenv && test -f $i/etc/profile.d/hm-session-vars.sh
+            fenv source $i/etc/profile.d/hm-session-vars.sh
+        end
     end
 end
 
