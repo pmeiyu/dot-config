@@ -30,6 +30,8 @@
           "browser.newtabpage.activity-stream.feeds.snippets" = false;
           "signon.rememberSignons" = false;
           "ui.key.menuAccessKeyFocuses" = false;
+
+          "network.captive-portal-service.enabled" = false;
         };
       };
     };
