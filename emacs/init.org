@@ -1632,19 +1632,18 @@
        (setq mu4e-get-mail-command "fdm fetch -v")
 
        ;; Default context.
-       (setq mu4e-maildir "~/Mail")
        (setq mu4e-drafts-folder "/drafts")
        (setq mu4e-refile-folder "/archive/inbox")
        (setq mu4e-sent-folder   "/sent")
        (setq mu4e-trash-folder  "/trash")
 
        (setq mu4e-maildir-shortcuts
-             '(("/archive/inbox" . ?a)
-               ("/drafts"        . ?d)
-               ("/inbox"         . ?i)
-               ("/sent"          . ?s)
-               ("/spam"          . ?j)
-               ("/trash"         . ?t)))
+             '((:maildir "/archive/inbox" :key ?a)
+               (:maildir "/drafts" :key ?d)
+               (:maildir "/inbox" :key ?i)
+               (:maildir "/sent" :key ?s)
+               (:maildir "/spam" :key ?j)
+               (:maildir "/trash" :key ?t)))
 
        (add-to-list 'mu4e-headers-actions
                     '("git apply mbox" . mu4e-action-git-apply-mbox) t)
