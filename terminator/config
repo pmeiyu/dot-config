@@ -1,0 +1,23 @@
+[global_config]
+  title_hide_sizetext = True
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = DejaVu Sans Mono 13
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 10000
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
