@@ -602,10 +602,10 @@
 
 ** Theme
    #+begin_src emacs-lisp
-     (use-package zenburn-theme
+     (use-package color-theme-sanityinc-tomorrow
        :ensure t
        :config
-       (load-theme 'zenburn 'no-confirm))
+       (load-theme 'sanityinc-tomorrow-night 'no-confirm))
    #+end_src
 
 ** Transparency
