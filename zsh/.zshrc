@@ -37,3 +37,14 @@ alias ssh-socks="ssh -o ProxyCommand='ncat --proxy-type socks5 --proxy localhost
 if [[ -f $ZSH_HOME/local-zshrc.sh ]]; then
     source $ZSH_HOME/local-zshrc.sh
 fi
+
+
+# ==============================
+# Switch to fish shell
+# ==============================
+
+# Switch to fish shell if parent process is a tmux server.
+if [[ $(ps -o comm= -p $PPID) == "tmux: server" ]] && command -v fish >/dev/null;
+then
+    exec fish -i
+fi
