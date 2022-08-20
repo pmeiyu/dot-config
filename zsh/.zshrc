@@ -6,6 +6,8 @@
 # Environment Variables
 # ==============================
 
+# Force emacs to enable 24-bit color feature.
+export COLORTERM=truecolor
 
 
 # ==============================
