@@ -6,8 +6,6 @@
 # Environment Variables
 # ==============================
 
-# Zsh configuration location
-ZSH_HOME=${ZDOTDIR:-$HOME}
 
 
 # ==============================
@@ -34,8 +32,8 @@ alias ssh-socks="ssh -o ProxyCommand='ncat --proxy-type socks5 --proxy localhost
 # Load local configurations
 # ==============================
 
-if [[ -f $ZSH_HOME/local-zshrc.sh ]]; then
-    source $ZSH_HOME/local-zshrc.sh
+if [[ -f $ZDOTDIR/local-zshrc.sh ]]; then
+    source $ZDOTDIR/local-zshrc.sh
 fi
 
 

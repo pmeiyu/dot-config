@@ -9,9 +9,6 @@
 # Load system-wide environment variables
 [[ -f /etc/profile ]] && source /etc/profile
 
-# Zsh configuration location
-ZSH_HOME=${ZDOTDIR:-$HOME}
-
 # XDG
 [[ -z $XDG_CONFIG_HOME ]] && export XDG_CONFIG_HOME=$HOME/.config
 [[ -z $XDG_DATA_HOME ]] && export XDG_DATA_HOME=$HOME/.local/share
@@ -119,8 +116,8 @@ fi
 # Load local configurations
 # ==============================
 
-if [[ -f $ZSH_HOME/local-profile.sh ]]; then
-    source $ZSH_HOME/local-profile.sh
+if [[ -f $ZDOTDIR/local-profile.sh ]]; then
+    source $ZDOTDIR/local-profile.sh
 fi
 
 
