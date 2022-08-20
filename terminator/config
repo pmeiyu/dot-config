@@ -10,6 +10,8 @@
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 10000
+    use_custom_command = True
+    custom_command = fish
     use_system_font = False
 [layouts]
   [[default]]
