@@ -116,8 +116,8 @@ fi
 # Load local configurations
 # ==============================
 
-if [[ -f $ZDOTDIR/local-profile.sh ]]; then
-    source $ZDOTDIR/local-profile.sh
+if [[ -f $ZDOTDIR/local-zprofile.sh ]]; then
+    source $ZDOTDIR/local-zprofile.sh
 fi
 
 
