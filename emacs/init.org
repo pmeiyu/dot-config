@@ -915,51 +915,17 @@
    #+end_src
 
 ** Language server protocol
-   lsp-mode
+   Eglot
    #+begin_src emacs-lisp
-     (use-package lsp-mode
+     (use-package eglot
        :ensure t
-       :commands (lsp lsp-deferred lsp-mode)
-       :init
-       (setq lsp-keymap-prefix "C-c l")
-       :config
-       (setq lsp-auto-guess-root t)
-       (setq lsp-file-watch-threshold 100000)
-       (add-hook 'lsp-mode-hook #'lsp-lens-mode))
-   #+end_src
-
-   lsp-ui
-   #+begin_src emacs-lisp
-     (use-package lsp-ui
-       :ensure t
-       :after lsp-mode
-       :commands (lsp-ui-mode)
-       :bind (:map lsp-ui-mode-map
-                   ("M-?" . lsp-ui-peek-find-references)
-                   ("M-." . lsp-ui-peek-find-definitions)
-                   ("C-M-." . lsp-ui-peek-find-implementation)))
-   #+end_src
-
-   debug
-   #+begin_src emacs-lisp
-     (use-package dap-mode
-       :ensure t
-       :commands (dap-mode dap-ui-mode dap-tooltip-mode)
-       :config (dap-auto-configure-mode))
-   #+end_src
-
-   helm-lsp
-   #+begin_src emacs-lisp
-     (use-package helm-lsp
-       :ensure t
-       :commands (helm-lsp-workspace-symbol))
-   #+end_src
-
-   lsp-treemacs
-   #+begin_src emacs-lisp
-     (use-package lsp-treemacs
-       :ensure t
-       :commands (lsp-treemacs-errors-list))
+       :commands (eglot eglot-ensure)
+       :bind (:map eglot-mode-map
+                   ("C-c l a" . eglot-code-actions)
+                   ("C-c l f" . eglot-format)
+                   ("C-c l r" . eglot-rename)
+                   ("C-c l t" . eglot-find-typeDefinition)
+                   ("C-c l i" . eglot-find-implementation)))
    #+end_src
 
 ** Parenthesis
@@ -1035,27 +1001,10 @@
        :hook (scheme-mode . guix-devel-mode))
    #+end_src
 
-** Bash
-   Language server
-   #+begin_src emacs-lisp :tangle no
-     (add-hook 'sh-mode-hook 'lsp-deferred)
-   #+end_src
-
 ** C
    #+begin_src emacs-lisp
      (setq c-default-style "linux")
      (setq-default c-basic-offset 4)
-   #+end_src
-
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'c-mode-hook 'lsp-deferred)
-     (add-hook 'c++-mode-hook 'lsp-deferred)
-   #+end_src
-
-   Install C language server
-   #+begin_src sh
-     # Install clangd
    #+end_src
 
    clang-format
@@ -1089,11 +1038,6 @@
        (add-hook 'csharp-mode-hook 'my-csharp-mode-setup))
    #+end_src
 
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'csharp-mode-hook 'lsp-deferred)
-   #+end_src
-
 ** fish shell
    #+begin_src emacs-lisp
      (use-package fish-mode
@@ -1121,11 +1065,6 @@
      (add-hook 'go-mode-hook 'my-go-mode-setup)
    #+end_src
 
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'go-mode-hook 'lsp-deferred)
-   #+end_src
-
 ** Java
    java-mode
    #+begin_src emacs-lisp
@@ -1134,23 +1073,6 @@
 
      (add-hook 'java-mode-hook 'my-java-mode-setup)
      (add-hook 'java-mode-hook 'subword-mode)
-   #+end_src
-
-   Language server
-   #+begin_src emacs-lisp
-     (use-package lsp-java
-       :ensure nil
-       :hook (java-mode . lsp-deferred)
-       :config
-       (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
-       (setq lsp-java-save-actions-organize-imports t)
-       (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"))
-   #+end_src
-
-** JavaScript
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'js-mode-hook 'lsp-deferred)
    #+end_src
 
 ** Kotlin
@@ -1179,11 +1101,6 @@
        :mode ("\\.ps[dm]?1\\'" . powershell-mode))
    #+end_src
 
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'powershell-mode-hook 'lsp-deferred)
-   #+end_src
-
 ** Python
    Prefer Python 3
    #+begin_src emacs-lisp
@@ -1200,11 +1117,6 @@
      (add-hook 'python-mode-hook 'my-python-mode-setup)
    #+end_src
 
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'python-mode-hook 'lsp-deferred)
-   #+end_src
-
 ** Rust
    rust-mode
    #+begin_src emacs-lisp
@@ -1213,11 +1125,6 @@
        :mode ("\\.rs\\'" . rust-mode)
        :config
        (setq rust-format-on-save t))
-   #+end_src
-
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'rust-mode-hook 'lsp-deferred)
    #+end_src
 
 ** SQL
@@ -1230,12 +1137,6 @@
    #+end_src
 
 ** Web
-*** CSS
-    Language server
-    #+begin_src emacs-lisp
-      (add-hook 'css-mode-hook 'lsp-deferred)
-    #+end_src
-
 *** HTML
     htmlize -- Converting buffer text and decorations to HTML.
     #+begin_src emacs-lisp
@@ -1251,22 +1152,12 @@
         :hook ((html-mode css-mode) . rainbow-mode))
     #+end_src
 
-    Language server
-    #+begin_src emacs-lisp
-      (add-hook 'html-mode-hook 'lsp-deferred)
-    #+end_src
-
 *** Vue
     vue-mode
     #+begin_src emacs-lisp
       (use-package vue-mode
         :ensure nil
         :mode ("\\.vue\\'" . vue-mode))
-    #+end_src
-
-    Language server
-    #+begin_src emacs-lisp
-      (add-hook 'vue-mode-hook 'lsp-deferred)
     #+end_src
 
 * File formats
@@ -1556,27 +1447,11 @@
      (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
    #+end_src
 
-   Language server
-   #+begin_src emacs-lisp :tangle no
-     (add-hook 'LaTeX-mode-hook 'lsp-deferred)
-   #+end_src
-
-   Install TeX language server
-   #+begin_src sh
-     # Install digestif
-   #+end_src
-
 ** YAML
    #+begin_src emacs-lisp
      (use-package yaml-mode
        :ensure t
        :mode ("\\.yaml\\'" "\\.yml\\'"))
-   #+end_src
-
-** XML
-   Language server
-   #+begin_src emacs-lisp
-     (add-hook 'nxml-mode-hook 'lsp-deferred)
    #+end_src
 
 * Internet
