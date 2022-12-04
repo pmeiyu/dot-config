@@ -54,6 +54,7 @@ self: super:
     paths = with super.pkgs; [
       gradle
       jdk
+      jdt-language-server
       maven
       visualvm
     ];
