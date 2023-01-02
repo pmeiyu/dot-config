@@ -697,24 +697,6 @@
                    ("g" . helm-rg)))
    #+end_src
 
-** Projectile
-   #+begin_src emacs-lisp
-     (use-package projectile
-       :ensure t
-       :defer 10
-       :diminish projectile-mode
-       :bind-keymap (("C-c p" . projectile-command-map))
-       :config
-       (projectile-mode 1)
-       (setq projectile-project-search-path '("~/Projects")))
-
-     (use-package helm-projectile
-       :ensure t
-       :after (helm projectile)
-       :config
-       (helm-projectile-on))
-   #+end_src
-
 ** File explorer
    #+begin_src emacs-lisp
      (use-package dired-sidebar
@@ -1014,8 +996,8 @@
        :commands (clang-format-buffer))
 
      (defun clang-format-buffer-smart ()
-       "Reformat buffer if .clang-format exists in the projectile root."
-       (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
+       "Reformat buffer if .clang-format exists in the project root."
+       (when (f-exists? (expand-file-name ".clang-format" (project-root (project-current))))
          (clang-format-buffer)))
 
      (defun my-c-mode-setup ()
