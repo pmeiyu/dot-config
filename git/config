@@ -28,6 +28,9 @@
 	safeCRLF = warn
 	editor = emacsclient
 
+[fetch]
+	prune = true
+
 [format]
 	coverLetter = auto
 
