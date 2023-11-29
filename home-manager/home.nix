@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.11";
   news.display = "silent";
 
   home.username = "meiyu";
@@ -13,7 +13,7 @@
   ];
 
   programs.firefox = {
-    enable = true;
+    enable = false;
     package = pkgs.firefox-esr;
     profiles = {
       "default.profile" = {
