@@ -662,7 +662,6 @@
        :init
        (defalias 'helm-do-grep-rg 'helm-do-grep-ag)
        :config
-       (require 'helm-config)
        (helm-mode 1)
 
        (setq helm-move-to-line-cycle-in-source t)
