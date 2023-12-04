@@ -862,10 +862,13 @@
    #+end_src
 
 ** Input Method
-   Rime input method
+   Rime input method.  This package should be installed by a system package
+   manager.
    #+begin_src emacs-lisp
      (use-package rime
        :ensure nil
+       :pin manual
+       :requires rime
        :config
        (setq default-input-method "rime")
        (setq rime-show-candidate 'posframe)
@@ -1284,7 +1287,7 @@
 *** org-roam
     #+begin_src emacs-lisp
       (use-package org-roam
-        :ensure t
+        :ensure nil
         :after org
         :defer 10
         :bind (("C-c r l" . org-roam-buffer-toggle)
