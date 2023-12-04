@@ -762,6 +762,8 @@
        :diminish undo-tree-mode
        :bind ("C-x u" . undo-tree-visualize)
        :config
+       (setq undo-tree-history-directory-alist
+             `(("." . ,(expand-file-name "undo-tree/" user-emacs-cache-dir))))
        (global-undo-tree-mode t))
    #+end_src
 
