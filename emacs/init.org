@@ -859,7 +859,7 @@
        :defer 10
        :diminish company-mode
        :config
-       (setq company-minimum-prefix-length 2)
+       (setq company-minimum-prefix-length 3)
        (global-company-mode 1))
    #+end_src
 
