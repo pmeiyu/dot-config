@@ -130,6 +130,11 @@
 * Core
   Emacs built-in features
 
+** Native compilation
+   #+begin_src emacs-lisp
+     (setq inhibit-automatic-native-compilation t)
+   #+end_src
+
 ** Require common lisp
    #+begin_src emacs-lisp
      (require 'cl-lib)
